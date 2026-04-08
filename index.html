@@ -85,8 +85,8 @@
         <div class="empty-state" id="curvesEmptyState">
           <h3>Hazard curves will appear here</h3>
           <p>
-            The first plot shows flow depth or derived amplitude. The second plot combines flow
-            velocity and momentum flux on dual y-axes.
+            The first plot shows amplitude for wet cells or flow depth for dry cells. The second
+            plot combines flow velocity and momentum flux on dual y-axes.
           </p>
         </div>
 
@@ -127,6 +127,9 @@
     crossorigin=""
   ></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <script>
+    window.PTHA_DATA_BASE_URL = "https://f004.backblazeb2.com/file/ptha-lookup-data/data_factored";
+  </script>
   <script type="module" src="./app.js"></script>
 </body>
 </html>
