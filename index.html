@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>California Tsunami Hazard Curve Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  >
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="eyebrow">California Tsunami Hazard Prototype</p>
+        <h1>PTHA Hazard Curve Explorer</h1>
+      </div>
+      <div class="topbar-meta">
+        <span class="status-pill">Binary range lookup enabled</span>
+      </div>
+    </header>
+
+    <main class="app-layout">
+      <section class="map-panel panel">
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Selection Map</p>
+            <h2>Statewide PTHA Coastal Grids</h2>
+          </div>
+          <div class="panel-actions">
+            <span class="status-pill subtle" id="mapStatusPill">Loading grids...</span>
+          </div>
+        </div>
+
+        <div class="map-frame">
+          <div id="map"></div>
+
+          <div class="map-overlay-card" id="mapOverlayCard">
+            <h3>Click inside a yellow grid extent</h3>
+            <p>
+              The map shows every PTHA grid extent. A click inside any outlined box loads the
+              hazard curves at the nearest gridded location.
+            </p>
+          </div>
+
+          <div class="map-hud">
+            <div class="hud-item">
+              <span class="hud-label">Selected Grid</span>
+              <strong id="selectedGridLabel">None</strong>
+            </div>
+            <div class="hud-item">
+              <span class="hud-label">Selected Point</span>
+              <strong id="selectedPointLabel">No point</strong>
+            </div>
+            <div class="hud-item">
+              <span class="hud-label">Coverage</span>
+              <strong id="gridCountLabel">--</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel curves-panel">
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Hazard Curves</p>
+            <h2 id="selectionTitle">Select a coastal location</h2>
+          </div>
+          <div class="panel-actions">
+            <span class="status-pill subtle" id="queryStatusPill">Awaiting selection</span>
+          </div>
+        </div>
+
+        <div class="selection-banner" id="selectionBanner">
+          Click within a yellow grid extent on the map to retrieve a precomputed hazard curve record.
+        </div>
+
+        <div class="empty-state" id="curvesEmptyState">
+          <h3>Hazard curves will appear here</h3>
+          <p>
+            The first plot shows flow depth or derived amplitude. The second plot combines flow
+            velocity and momentum flux on dual y-axes.
+          </p>
+        </div>
+
+        <div class="curves-content hidden" id="curvesContent">
+          <div class="chart-stack">
+            <div class="chart-panel">
+              <div class="chart-title-row">
+                <div>
+                  <h3 id="depthChartTitle">Flow Depth / Amplitude</h3>
+                </div>
+                <span id="depthChartMeta">Return-period hazard curve</span>
+              </div>
+              <div class="chart-canvas-frame">
+                <canvas id="depthChartCanvas"></canvas>
+              </div>
+            </div>
+
+            <div class="chart-panel">
+              <div class="chart-title-row">
+                <div>
+                  <h3 id="combinedChartTitle">Velocity + Momentum Flux</h3>
+                </div>
+                <span id="combinedChartMeta">Dual-axis plot</span>
+              </div>
+              <div class="chart-canvas-frame">
+                <canvas id="combinedChartCanvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
