@@ -2,6 +2,8 @@ const RETURN_PERIODS = [72, 100, 200, 475, 975, 2475, 3000];
 const RECORD_FLOAT_COUNT = 36;
 const DEFAULT_MAP_CENTER = [36.85, -120.15];
 const DEFAULT_MAP_ZOOM = 6;
+const FEET_PER_METER = 3.280839895;
+const CUBIC_FEET_PER_CUBIC_METER = 35.314666721;
 const { metadataRoot: METADATA_ROOT, binaryRoot: BINARY_ROOT } = resolveDataRoots();
 
 const COLORS = {
@@ -24,13 +26,12 @@ const state = {
   manifestCache: new Map(),
   depthChart: null,
   combinedChart: null,
+  unitSystem: "metric",
 };
 
 const dom = {
-  mapStatusPill: document.getElementById("mapStatusPill"),
   selectedGridLabel: document.getElementById("selectedGridLabel"),
   selectedPointLabel: document.getElementById("selectedPointLabel"),
-  gridCountLabel: document.getElementById("gridCountLabel"),
   selectionTitle: document.getElementById("selectionTitle"),
   queryStatusPill: document.getElementById("queryStatusPill"),
   selectionBanner: document.getElementById("selectionBanner"),
@@ -42,6 +43,7 @@ const dom = {
   combinedChartMeta: document.getElementById("combinedChartMeta"),
   depthChartCanvas: document.getElementById("depthChartCanvas"),
   combinedChartCanvas: document.getElementById("combinedChartCanvas"),
+  unitToggleButtons: Array.from(document.querySelectorAll(".unit-toggle-button")),
 };
 
 const emptyStateMessagePlugin = {
@@ -97,10 +99,9 @@ async function init() {
   state.index = normalizeIndex(await fetchJSON(buildMetadataUrl("index.json")));
   initCharts();
   initMap();
+  initUnitToggle();
   resetSelectionDisplay();
 
-  dom.gridCountLabel.textContent = `${state.index.grids.length} grids`;
-  dom.mapStatusPill.textContent = `${state.index.grids.length} coastal grids`;
   setQueryStatus("Awaiting selection");
   setBanner("Click within a yellow grid extent on the map to retrieve a precomputed hazard curve record.", "info");
 
@@ -109,6 +110,35 @@ async function init() {
     state.map.setView([requestedLatLng.lat, requestedLatLng.lng], Math.max(state.map.getZoom(), 10));
     await handleMapSelection(requestedLatLng);
   }
+}
+
+function initUnitToggle() {
+  updateUnitToggleUi();
+  dom.unitToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setUnitSystem(button.dataset.unitSystem);
+    });
+  });
+}
+
+function setUnitSystem(nextUnitSystem) {
+  if (nextUnitSystem !== "metric" && nextUnitSystem !== "english") {
+    return;
+  }
+
+  state.unitSystem = nextUnitSystem;
+  updateUnitToggleUi();
+
+  if (state.selectedSelection) {
+    renderSelectionDetails(state.selectedSelection);
+    renderCharts(state.selectedSelection);
+  }
+}
+
+function updateUnitToggleUi() {
+  dom.unitToggleButtons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.unitSystem === state.unitSystem);
+  });
 }
 
 function normalizeIndex(rawIndex) {
@@ -210,7 +240,7 @@ function initCharts() {
     data: {
       datasets: [],
     },
-    options: buildCombinedChartOptions("Velocity and momentum flux will appear after a valid map selection."),
+    options: buildCombinedChartOptions("Maximum tsunami velocity and maximum tsunami momentum flux will appear after a valid map selection."),
   });
 }
 
@@ -325,7 +355,7 @@ function buildCombinedChartOptions(emptyMessage) {
         min: 0,
         title: {
           display: true,
-          text: "Velocity (m/s)",
+          text: "Maximum Tsunami Velocity (m/s)",
           color: COLORS.navy,
           font: {
             family: "Manrope",
@@ -344,7 +374,7 @@ function buildCombinedChartOptions(emptyMessage) {
         min: 0,
         title: {
           display: true,
-          text: "Momentum flux (m^3/s^2)",
+          text: "Maximum Tsunami Momentum Flux (m^3/s^2)",
           color: COLORS.navy,
           font: {
             family: "Manrope",
@@ -414,11 +444,8 @@ async function handleMapSelection(latlng) {
 
   updateGridHighlight();
   updateSelectedMarker(selection);
+  renderSelectionDetails(selection);
   renderCharts(selection);
-
-  dom.selectedGridLabel.textContent = formatGridDisplayName(selection.gridName);
-  dom.selectedPointLabel.textContent = `${selection.cellCenter.latitude.toFixed(4)}, ${selection.cellCenter.longitude.toFixed(4)}`;
-  dom.selectionTitle.textContent = `${formatGridDisplayName(selection.gridName)} Grid. Lat/Lon clicked ${selection.clicked.latitude.toFixed(4)}, ${selection.clicked.longitude.toFixed(4)} with DEM Elevation of ${formatValue(selection.topo, 1)} m (MHW).`;
 
   setQueryStatus("Lookup complete");
   clearBanner();
@@ -535,9 +562,8 @@ function buildSelection(grid, manifest, latlng, cell, record) {
     isInitiallyWet,
     primaryCurve,
     primaryCurveLabel: isInitiallyWet
-      ? "Amplitude"
-      : "Flow depth",
-    primaryCurveUnits: "m",
+      ? "Maximum Tsunami Crest Elevation"
+      : "Maximum Tsunami Flow Depth",
     flowDepth,
     sourceAmplitude,
     velocity,
@@ -550,32 +576,35 @@ function buildSelection(grid, manifest, latlng, cell, record) {
 }
 
 function renderCharts(selection) {
-  const primaryData = buildCurveDataset(selection.primaryCurve);
-  const velocityData = buildCurveDataset(selection.velocity);
-  const momentumData = buildCurveDataset(selection.momentumFlux);
+  const primaryData = buildCurveDataset(convertCurveValues(selection.primaryCurve, "length"));
+  const velocityData = buildCurveDataset(convertCurveValues(selection.velocity, "velocity"));
+  const momentumData = buildCurveDataset(convertCurveValues(selection.momentumFlux, "momentumFlux"));
+  const lengthUnit = getUnitLabel("length");
+  const velocityUnit = getUnitLabel("velocity");
+  const momentumFluxUnit = getUnitLabel("momentumFlux");
 
   dom.depthChartTitle.textContent = selection.isInitiallyWet
-    ? "Amplitude Hazard Curve"
-    : "Flow Depth Hazard Curve";
+    ? "Maximum Tsunami Crest Elevation Hazard Curve"
+    : "Maximum Tsunami Flow Depth Hazard Curve";
   dom.depthChartMeta.textContent = selection.isInitiallyWet
-    ? "Wet cell: amplitude from source amplitude raster"
-    : "Dry cell: flow depth from source flow-depth raster";
+    ? "Wet cell: maximum tsunami crest elevation from the source amplitude raster"
+    : "Dry cell: maximum tsunami flow depth from the source flow-depth raster";
 
-  dom.combinedChartTitle.textContent = "Velocity + Momentum Flux Hazard Curves";
-  dom.combinedChartMeta.textContent = `Cell row ${selection.row}, col ${selection.col}`;
+  dom.combinedChartTitle.textContent = "Maximum Tsunami Velocity + Maximum Tsunami Momentum Flux Hazard Curves";
+  dom.combinedChartMeta.textContent = "Dual-axis plot";
 
   state.depthChart.options.scales.y.title.text = selection.isInitiallyWet
-    ? "Amplitude (m)"
-    : "Flow Depth (m)";
+    ? `Maximum Tsunami Crest Elevation (${lengthUnit})`
+    : `Maximum Tsunami Flow Depth (${lengthUnit})`;
   state.depthChart.options.plugins.emptyStateMessage.message = selection.hasAnyPrimaryData
     ? ""
     : selection.isInitiallyWet
-      ? "No valid amplitude values were stored for this cell."
-      : "No valid flow-depth values were stored for this cell.";
+      ? "No valid maximum tsunami crest elevation values were stored for this cell."
+      : "No valid maximum tsunami flow depth values were stored for this cell.";
   state.depthChart.data.datasets = [
     {
       label: selection.primaryCurveLabel,
-      units: selection.primaryCurveUnits,
+      units: lengthUnit,
       data: primaryData,
       borderColor: COLORS.blue,
       backgroundColor: "rgba(37, 99, 235, 0.16)",
@@ -590,13 +619,15 @@ function renderCharts(selection) {
   ];
   state.depthChart.update();
 
+  state.combinedChart.options.scales.y.title.text = `Maximum Tsunami Velocity (${velocityUnit})`;
+  state.combinedChart.options.scales.y1.title.text = `Maximum Tsunami Momentum Flux (${momentumFluxUnit})`;
   state.combinedChart.options.plugins.emptyStateMessage.message = selection.hasAnyCombinedData
     ? ""
-    : "No valid velocity or momentum values were stored for this cell.";
+    : "No valid maximum tsunami velocity or momentum flux values were stored for this cell.";
   state.combinedChart.data.datasets = [
     {
-      label: "Velocity",
-      units: "m/s",
+      label: "Maximum Tsunami Velocity",
+      units: velocityUnit,
       yAxisID: "y",
       data: velocityData,
       borderColor: COLORS.aqua,
@@ -610,8 +641,8 @@ function renderCharts(selection) {
       spanGaps: false,
     },
     {
-      label: "Momentum flux",
-      units: "m^3/s^2",
+      label: "Maximum Tsunami Momentum Flux",
+      units: momentumFluxUnit,
       yAxisID: "y1",
       data: momentumData,
       borderColor: COLORS.coral,
@@ -843,6 +874,64 @@ function clamp(value, min, max) {
 
 function formatValue(value, digits = 3) {
   return Number.isFinite(value) ? value.toFixed(digits) : "NaN";
+}
+
+function renderSelectionDetails(selection) {
+  const demValue = convertValue(selection.topo, "length");
+  dom.selectedGridLabel.textContent = formatGridDisplayName(selection.gridName);
+  dom.selectedPointLabel.textContent = `${selection.cellCenter.latitude.toFixed(4)}, ${selection.cellCenter.longitude.toFixed(4)}`;
+  dom.selectionTitle.textContent = `${formatGridDisplayName(selection.gridName)} Grid. Lat/Lon clicked ${selection.clicked.latitude.toFixed(4)}, ${selection.clicked.longitude.toFixed(4)} with DEM Elevation of ${formatValue(demValue, 1)} ${getUnitLabel("length")} (MHW).`;
+}
+
+function convertCurveValues(values, quantity) {
+  return values.map((value) => convertValue(value, quantity));
+}
+
+function convertValue(value, quantity) {
+  if (!Number.isFinite(value)) {
+    return NaN;
+  }
+
+  if (state.unitSystem === "metric") {
+    return value;
+  }
+
+  switch (quantity) {
+    case "length":
+      return value * FEET_PER_METER;
+    case "velocity":
+      return value * FEET_PER_METER;
+    case "momentumFlux":
+      return value * CUBIC_FEET_PER_CUBIC_METER;
+    default:
+      return value;
+  }
+}
+
+function getUnitLabel(quantity) {
+  if (state.unitSystem === "metric") {
+    switch (quantity) {
+      case "length":
+        return "m";
+      case "velocity":
+        return "m/s";
+      case "momentumFlux":
+        return "m^3/s^2";
+      default:
+        return "";
+    }
+  }
+
+  switch (quantity) {
+    case "length":
+      return "ft";
+    case "velocity":
+      return "ft/s";
+    case "momentumFlux":
+      return "ft^3/s^2";
+    default:
+      return "";
+  }
 }
 
 function escapeHtml(value) {

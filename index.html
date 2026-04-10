@@ -34,34 +34,29 @@
             <p class="panel-eyebrow">Selection Map</p>
             <h2>Statewide PTHA Coastal Grids</h2>
           </div>
-          <div class="panel-actions">
-            <span class="status-pill subtle" id="mapStatusPill">Loading grids...</span>
-          </div>
         </div>
 
         <div class="map-frame">
           <div id="map"></div>
 
-          <div class="map-overlay-card" id="mapOverlayCard">
-            <h3>Click inside a yellow grid extent</h3>
-            <p>
-              The map shows every PTHA grid extent. A click inside any outlined box loads the
-              hazard curves at the nearest gridded location.
-            </p>
-          </div>
+          <div class="map-top-strip">
+            <div class="map-hud">
+              <div class="hud-item">
+                <span class="hud-label">Selected Grid</span>
+                <strong id="selectedGridLabel">None</strong>
+              </div>
+              <div class="hud-item">
+                <span class="hud-label">Selected Point</span>
+                <strong id="selectedPointLabel">No point</strong>
+              </div>
+            </div>
 
-          <div class="map-hud">
-            <div class="hud-item">
-              <span class="hud-label">Selected Grid</span>
-              <strong id="selectedGridLabel">None</strong>
-            </div>
-            <div class="hud-item">
-              <span class="hud-label">Selected Point</span>
-              <strong id="selectedPointLabel">No point</strong>
-            </div>
-            <div class="hud-item">
-              <span class="hud-label">Coverage</span>
-              <strong id="gridCountLabel">--</strong>
+            <div class="map-overlay-card" id="mapOverlayCard">
+              <h3>Click inside a yellow grid extent</h3>
+              <p>
+                The map shows every PTHA grid extent. A click inside any outlined box loads the
+                hazard curves at the nearest gridded location.
+              </p>
             </div>
           </div>
         </div>
@@ -74,6 +69,10 @@
             <h2 id="selectionTitle">Select a coastal location</h2>
           </div>
           <div class="panel-actions">
+            <div class="unit-toggle" role="group" aria-label="Unit system">
+              <button type="button" class="unit-toggle-button is-active" data-unit-system="metric">Metric</button>
+              <button type="button" class="unit-toggle-button" data-unit-system="english">English</button>
+            </div>
             <span class="status-pill subtle" id="queryStatusPill">Awaiting selection</span>
           </div>
         </div>
@@ -85,8 +84,9 @@
         <div class="empty-state" id="curvesEmptyState">
           <h3>Hazard curves will appear here</h3>
           <p>
-            The first plot shows amplitude for wet cells or flow depth for dry cells. The second
-            plot combines flow velocity and momentum flux on dual y-axes.
+            The first plot shows maximum tsunami crest elevation for wet cells or maximum tsunami
+            flow depth for dry cells. The second plot combines maximum tsunami velocity and
+            maximum tsunami momentum flux on dual y-axes.
           </p>
         </div>
 
@@ -95,7 +95,7 @@
             <div class="chart-panel">
               <div class="chart-title-row">
                 <div>
-                  <h3 id="depthChartTitle">Flow Depth / Amplitude</h3>
+                  <h3 id="depthChartTitle">Maximum Tsunami Crest Elevation / Maximum Tsunami Flow Depth</h3>
                 </div>
                 <span id="depthChartMeta">Return-period hazard curve</span>
               </div>
@@ -107,7 +107,7 @@
             <div class="chart-panel">
               <div class="chart-title-row">
                 <div>
-                  <h3 id="combinedChartTitle">Velocity + Momentum Flux</h3>
+                  <h3 id="combinedChartTitle">Maximum Tsunami Velocity + Maximum Tsunami Momentum Flux</h3>
                 </div>
                 <span id="combinedChartMeta">Dual-axis plot</span>
               </div>
