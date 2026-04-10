@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>California Real-Time PTHA Inundation Forecast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  >
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./forecast.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="eyebrow">California Tsunami Forecast Prototype</p>
+        <h1>Real-Time PTHA Inundation Forecast</h1>
+      </div>
+      <div class="topbar-meta forecast-topbar-meta">
+        <button type="button" class="ghost-button topbar-button" id="loadWorkbookButton">Load Workbook</button>
+        <span class="status-pill" id="topbarWorkbookStatus">Bundled workbook</span>
+      </div>
+      <input id="workbookInput" type="file" accept=".xlsx,.xls" class="hidden">
+    </header>
+
+    <main class="app-layout forecast-layout">
+      <section class="map-panel panel">
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Event Map</p>
+            <h2>Statewide PTHA Forecast Grids</h2>
+          </div>
+        </div>
+
+        <div class="map-frame">
+          <div id="forecastMap"></div>
+
+          <div class="map-top-strip">
+            <div class="map-hud">
+              <div class="hud-item">
+                <span class="hud-label">Selected Grid</span>
+                <strong id="selectedGridLabel">None</strong>
+              </div>
+              <div class="hud-item">
+                <span class="hud-label">Grid Event RP</span>
+                <strong id="gridEventReturnPeriodLabel">None</strong>
+              </div>
+              <div class="hud-item">
+                <span class="hud-label">Clicked Point</span>
+                <strong id="selectedPointLabel">No point</strong>
+              </div>
+              <div class="hud-item">
+                <span class="hud-label">Nearest Site</span>
+                <strong id="nearestSiteLabel">None</strong>
+              </div>
+            </div>
+
+            <div class="map-overlay-card" id="mapOverlayCard">
+              <h3>Click any coastal location</h3>
+              <p>
+                Site points come from the response-ready FASTER workbook. Click any map location to
+                pair the nearest forecast site with NOAA tides and a clicked-location PTHA hazard curve.
+              </p>
+            </div>
+          </div>
+
+          <div class="inundation-legend hidden" id="inundationLegend">
+            <h3>Event Inundation Lines</h3>
+            <ul id="inundationLegendList"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel forecast-panel">
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Forecast Details</p>
+            <h2 id="selectionTitle">Loading the bundled tsunami scenario</h2>
+          </div>
+          <div class="panel-actions">
+            <div class="unit-toggle" role="group" aria-label="Unit system">
+              <button type="button" class="unit-toggle-button is-active" data-unit-system="metric">Metric</button>
+              <button type="button" class="unit-toggle-button" data-unit-system="english">English</button>
+            </div>
+            <div class="unit-toggle" role="group" aria-label="Time mode">
+              <button type="button" class="unit-toggle-button is-active" data-time-mode="utc">UTC</button>
+              <button type="button" class="unit-toggle-button" data-time-mode="local">Local Time</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="forecast-control-row">
+          <div class="source-pill">
+            <span class="source-pill-label">Workbook</span>
+            <strong id="workbookSourceLabel">Loading...</strong>
+          </div>
+        </div>
+
+        <div class="selection-banner" id="selectionBanner">
+          Loading workbook sites, PTHA metadata, and NOAA station metadata.
+        </div>
+
+        <div class="empty-state" id="forecastEmptyState">
+          <h3>Forecast plots will appear here</h3>
+          <p>
+            After the scenario loads, click any map location to plot NOAA tides with the site-based
+            tsunami envelope and the clicked-location PTHA hazard curve with an event-return-period marker.
+          </p>
+        </div>
+
+        <div class="curves-content hidden" id="forecastContent">
+          <div class="chart-stack">
+            <div class="chart-panel">
+              <div class="chart-title-row">
+                <div>
+                  <h3 id="tideChartTitle">NOAA Tide Prediction + Tsunami Envelope</h3>
+                </div>
+                <span id="tideChartMeta">Awaiting map selection</span>
+              </div>
+              <div class="chart-canvas-frame">
+                <canvas id="tideChartCanvas"></canvas>
+              </div>
+            </div>
+
+            <div class="chart-panel">
+              <div class="chart-title-row">
+                <div>
+                  <h3 id="hazardChartTitle">Clicked-Location Event Hazard Curve</h3>
+                </div>
+                <span id="hazardChartMeta">Awaiting map selection</span>
+              </div>
+              <div class="chart-canvas-frame">
+                <canvas id="hazardChartCanvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <script>
+    if (!["127.0.0.1", "localhost"].includes(window.location.hostname)) {
+      window.PTHA_BINARY_BASE_URL = "https://f004.backblazeb2.com/file/ptha-lookup-data/data_factored";
+    }
+  </script>
+  <script type="module" src="./forecast.js"></script>
+</body>
+</html>
