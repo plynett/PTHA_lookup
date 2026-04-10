@@ -843,9 +843,9 @@ async function buildInundationLayerForGrid(gridName) {
 
   const layerGroup = L.layerGroup();
 
-  for (const contourSet of inundationData.contourSets || []) {
+  for (const contourSet of normalizeJsonArray(inundationData.contourSets)) {
     const color = INUNDATION_COLORS.get(Number(contourSet.returnPeriodYears)) || COLORS.coral;
-    const latLngGroups = (contourSet.segments || [])
+    const latLngGroups = normalizeJsonArray(contourSet.segments)
       .map((segment) => Array.isArray(segment.coordinates)
         ? segment.coordinates.map((coordinate) => [Number(coordinate[1]), Number(coordinate[0])])
         : [])
@@ -857,7 +857,7 @@ async function buildInundationLayerForGrid(gridName) {
 
     L.polyline(latLngGroups, {
       color,
-      weight: 1.9,
+      weight: 5.7,
       opacity: 0.95,
       smoothFactor: 0.4,
       interactive: false,
@@ -905,7 +905,19 @@ function intersectsMapBounds(mapBounds, bounds180) {
 }
 
 function shouldRenderInundationOverlays() {
-  return Boolean(state.map) && state.map.getZoom() >= INUNDATION_MIN_ZOOM;
+  return Boolean(state.map) && state.map.getZoom() >= (state.map.getMaxZoom() - 5);
+}
+
+function normalizeJsonArray(value) {
+  if (Array.isArray(value)) {
+    return value;
+  }
+
+  if (value == null) {
+    return [];
+  }
+
+  return [value];
 }
 
 function showInundationLegend() {
