@@ -1,0 +1,382 @@
+{
+  "gridName": "38_Oxnard",
+  "binaryFile": "38_Oxnard_lookup.bin",
+  "dtype": "float32",
+  "byteOrder": "little-endian",
+  "recordLengthBytes": 144,
+  "numFields": 36,
+  "numRecords": 1.1308E+6,
+  "rasterSize": [
+    1285,
+    880
+  ],
+  "returnPeriodsYears": [
+    72,
+    100,
+    200,
+    475,
+    975,
+    2475,
+    3000
+  ],
+  "fields": [
+    {
+      "index1Based": 1,
+      "name": "Topo",
+      "group": "Topo",
+      "returnPeriodYears": [],
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 0,
+      "description": "Topographic/bathymetric elevation from the source DEM."
+    },
+    {
+      "index1Based": 2,
+      "name": "FlowDepth_00072yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 72,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 4,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 3,
+      "name": "FlowDepth_00100yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 100,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 8,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 4,
+      "name": "FlowDepth_00200yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 200,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 12,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 5,
+      "name": "FlowDepth_00475yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 475,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 16,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 6,
+      "name": "FlowDepth_00975yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 975,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 20,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 7,
+      "name": "FlowDepth_02475yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 2475,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 24,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 8,
+      "name": "FlowDepth_03000yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 3000,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 28,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 9,
+      "name": "DepthOrAmplitude_00072yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 72,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 32,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 10,
+      "name": "DepthOrAmplitude_00100yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 100,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 36,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 11,
+      "name": "DepthOrAmplitude_00200yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 200,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 40,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 12,
+      "name": "DepthOrAmplitude_00475yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 475,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 44,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 13,
+      "name": "DepthOrAmplitude_00975yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 975,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 48,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 14,
+      "name": "DepthOrAmplitude_02475yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 2475,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 52,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 15,
+      "name": "DepthOrAmplitude_03000yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 3000,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 56,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 16,
+      "name": "Amplitude_00072yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 72,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 60,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 17,
+      "name": "Amplitude_00100yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 100,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 64,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 18,
+      "name": "Amplitude_00200yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 200,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 68,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 19,
+      "name": "Amplitude_00475yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 475,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 72,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 20,
+      "name": "Amplitude_00975yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 975,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 76,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 21,
+      "name": "Amplitude_02475yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 2475,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 80,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 22,
+      "name": "Amplitude_03000yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 3000,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 84,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 23,
+      "name": "Velocity_00072yr",
+      "group": "Velocity",
+      "returnPeriodYears": 72,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 88,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 24,
+      "name": "Velocity_00100yr",
+      "group": "Velocity",
+      "returnPeriodYears": 100,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 92,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 25,
+      "name": "Velocity_00200yr",
+      "group": "Velocity",
+      "returnPeriodYears": 200,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 96,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 26,
+      "name": "Velocity_00475yr",
+      "group": "Velocity",
+      "returnPeriodYears": 475,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 100,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 27,
+      "name": "Velocity_00975yr",
+      "group": "Velocity",
+      "returnPeriodYears": 975,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 104,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 28,
+      "name": "Velocity_02475yr",
+      "group": "Velocity",
+      "returnPeriodYears": 2475,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 108,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 29,
+      "name": "Velocity_03000yr",
+      "group": "Velocity",
+      "returnPeriodYears": 3000,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 112,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 30,
+      "name": "MomentumFlux_00072yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 72,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 116,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 31,
+      "name": "MomentumFlux_00100yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 100,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 120,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 32,
+      "name": "MomentumFlux_00200yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 200,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 124,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 33,
+      "name": "MomentumFlux_00475yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 475,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 128,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 34,
+      "name": "MomentumFlux_00975yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 975,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 132,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 35,
+      "name": "MomentumFlux_02475yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 2475,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 136,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 36,
+      "name": "MomentumFlux_03000yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 3000,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 140,
+      "description": "Maximum flow momentum flux."
+    }
+  ],
+  "cellOrdering": "row-major fixed records, zero-based in web clients",
+  "lookupFormula": "byteOffset = (row * nCols + col) * recordLengthBytes",
+  "bounds360": {
+    "minLatitude": 34.140888888888881,
+    "maxLatitude": 34.255111111111148,
+    "minLongitude": 240.72088888888891,
+    "maxLongitude": 240.79911111111116
+  },
+  "bounds180": {
+    "minLatitude": 34.140888888888881,
+    "maxLatitude": 34.255111111111148,
+    "minLongitude": -119.27911111111109,
+    "maxLongitude": -119.20088888888881
+  },
+  "gridGeometry": {
+    "nRows": 1285,
+    "nCols": 880,
+    "topEdgeLatitude": 34.255111111111148,
+    "westEdgeLongitude360": 240.72088888888891,
+    "westEdgeLongitude180": -119.27911111111109,
+    "cellSizeLatitude": 8.8888888888923791E-5,
+    "cellSizeLongitude": 8.8888888888922165E-5,
+    "row0AtNorthEdge": true,
+    "col0AtWestEdge": true,
+    "cellCenterFormula": "lat = topEdgeLatitude - (row + 0.5) * cellSizeLatitude; lon360 = westEdgeLongitude360 + (col + 0.5) * cellSizeLongitude"
+  },
+  "binaryBytes": 1.628352E+8,
+  "sourceMetadata": {
+    "LocationName": "38_Oxnard",
+    "MinLatitude": 34.140844430200005,
+    "MaxLatitude": 34.2550666667,
+    "MinLongitude": 240.7209333333,
+    "MaxLongitude": 240.7991555653
+  }
+}

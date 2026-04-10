@@ -2,7 +2,7 @@ const RETURN_PERIODS = [72, 100, 200, 475, 975, 2475, 3000];
 const RECORD_FLOAT_COUNT = 36;
 const DEFAULT_MAP_CENTER = [36.85, -120.15];
 const DEFAULT_MAP_ZOOM = 6;
-const DATA_ROOT = resolveDataRoot();
+const { metadataRoot: METADATA_ROOT, binaryRoot: BINARY_ROOT } = resolveDataRoots();
 
 const COLORS = {
   navy: "#11314c",
@@ -94,7 +94,7 @@ init().catch((error) => {
 
 async function init() {
   setBanner("Loading factored grid index...", "info");
-  state.index = normalizeIndex(await fetchJSON(buildDataUrl("index.json")));
+  state.index = normalizeIndex(await fetchJSON(buildMetadataUrl("index.json")));
   initCharts();
   initMap();
   resetSelectionDisplay();
@@ -438,7 +438,7 @@ async function getGridManifest(grid) {
     return state.manifestCache.get(grid.gridName);
   }
 
-  const manifest = await fetchJSON(buildDataUrl(grid.manifest));
+  const manifest = await fetchJSON(buildMetadataUrl(grid.manifest));
   manifest.recordLengthBytes = Number(manifest.recordLengthBytes);
   manifest.gridGeometry.nRows = Number(manifest.gridGeometry.nRows);
   manifest.gridGeometry.nCols = Number(manifest.gridGeometry.nCols);
@@ -479,7 +479,7 @@ function latLngToRowCol(latlng, manifest) {
 
 async function fetchBinaryRecord(relativeBinaryPath, byteOffset, recordLengthBytes) {
   const byteRange = `bytes=${byteOffset}-${byteOffset + recordLengthBytes - 1}`;
-  const response = await fetch(buildDataUrl(relativeBinaryPath), {
+  const response = await fetch(buildBinaryUrl(relativeBinaryPath), {
     headers: {
       Range: byteRange,
     },
@@ -767,19 +767,32 @@ function normalizeRelativePath(path) {
   return String(path).replaceAll("\\", "/");
 }
 
-function resolveDataRoot() {
+function resolveDataRoots() {
   const url = new URL(window.location.href);
-  const queryValue = url.searchParams.get("dataBaseUrl");
-  const globalValue = globalThis.PTHA_DATA_BASE_URL;
-  return normalizeDataRoot(queryValue || globalValue || "./data_factored");
+  const sharedQueryValue = url.searchParams.get("dataBaseUrl");
+  const sharedGlobalValue = globalThis.PTHA_DATA_BASE_URL;
+  const metadataQueryValue = url.searchParams.get("metadataBaseUrl");
+  const binaryQueryValue = url.searchParams.get("binaryBaseUrl");
+  const metadataGlobalValue = globalThis.PTHA_METADATA_BASE_URL;
+  const binaryGlobalValue = globalThis.PTHA_BINARY_BASE_URL;
+  const sharedValue = sharedQueryValue || sharedGlobalValue;
+
+  return {
+    metadataRoot: normalizeDataRoot(metadataQueryValue || metadataGlobalValue || sharedValue || "./metadata"),
+    binaryRoot: normalizeDataRoot(binaryQueryValue || binaryGlobalValue || sharedValue || "./data_factored"),
+  };
 }
 
 function normalizeDataRoot(path) {
   return String(path).replaceAll("\\", "/").replace(/\/+$/, "");
 }
 
-function buildDataUrl(relativePath) {
-  return `${DATA_ROOT}/${normalizeRelativePath(relativePath).replace(/^\/+/, "")}`;
+function buildMetadataUrl(relativePath) {
+  return `${METADATA_ROOT}/${normalizeRelativePath(relativePath).replace(/^\/+/, "")}`;
+}
+
+function buildBinaryUrl(relativePath) {
+  return `${BINARY_ROOT}/${normalizeRelativePath(relativePath).replace(/^\/+/, "")}`;
 }
 
 function formatGridDisplayName(gridName) {

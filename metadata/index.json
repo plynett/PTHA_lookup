@@ -1,0 +1,1669 @@
+{
+  "title": "PTHA factored lookup database",
+  "createdUtc": "2026-04-08T11:37:40Z",
+  "sourceMetadata": "data/PTHA_metadata.json",
+  "returnPeriodsYears": [
+    72,
+    100,
+    200,
+    475,
+    975,
+    2475,
+    3000
+  ],
+  "dtype": "float32",
+  "byteOrder": "little-endian",
+  "recordLengthBytes": 144,
+  "cellOrdering": "row-major, zero-based for web lookup: cellIndex = row * nCols + col",
+  "fields": [
+    {
+      "index1Based": 1,
+      "name": "Topo",
+      "group": "Topo",
+      "returnPeriodYears": [],
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 0,
+      "description": "Topographic/bathymetric elevation from the source DEM."
+    },
+    {
+      "index1Based": 2,
+      "name": "FlowDepth_00072yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 72,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 4,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 3,
+      "name": "FlowDepth_00100yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 100,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 8,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 4,
+      "name": "FlowDepth_00200yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 200,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 12,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 5,
+      "name": "FlowDepth_00475yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 475,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 16,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 6,
+      "name": "FlowDepth_00975yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 975,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 20,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 7,
+      "name": "FlowDepth_02475yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 2475,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 24,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 8,
+      "name": "FlowDepth_03000yr",
+      "group": "FlowDepth",
+      "returnPeriodYears": 3000,
+      "units": "m above ground",
+      "byteOffsetWithinRecord": 28,
+      "description": "Raw flow depth from the source Flowdepth raster."
+    },
+    {
+      "index1Based": 9,
+      "name": "DepthOrAmplitude_00072yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 72,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 32,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 10,
+      "name": "DepthOrAmplitude_00100yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 100,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 36,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 11,
+      "name": "DepthOrAmplitude_00200yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 200,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 40,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 12,
+      "name": "DepthOrAmplitude_00475yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 475,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 44,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 13,
+      "name": "DepthOrAmplitude_00975yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 975,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 48,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 14,
+      "name": "DepthOrAmplitude_02475yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 2475,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 52,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 15,
+      "name": "DepthOrAmplitude_03000yr",
+      "group": "DepthOrAmplitude",
+      "returnPeriodYears": 3000,
+      "units": "m rel. local rule",
+      "byteOffsetWithinRecord": 56,
+      "description": "Flow depth for dry cells, or derived amplitude for initially wet cells."
+    },
+    {
+      "index1Based": 16,
+      "name": "Amplitude_00072yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 72,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 60,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 17,
+      "name": "Amplitude_00100yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 100,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 64,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 18,
+      "name": "Amplitude_00200yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 200,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 68,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 19,
+      "name": "Amplitude_00475yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 475,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 72,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 20,
+      "name": "Amplitude_00975yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 975,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 76,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 21,
+      "name": "Amplitude_02475yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 2475,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 80,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 22,
+      "name": "Amplitude_03000yr",
+      "group": "Amplitude",
+      "returnPeriodYears": 3000,
+      "units": "m rel. MHW",
+      "byteOffsetWithinRecord": 84,
+      "description": "Raw amplitude from the source Amplitude raster."
+    },
+    {
+      "index1Based": 23,
+      "name": "Velocity_00072yr",
+      "group": "Velocity",
+      "returnPeriodYears": 72,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 88,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 24,
+      "name": "Velocity_00100yr",
+      "group": "Velocity",
+      "returnPeriodYears": 100,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 92,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 25,
+      "name": "Velocity_00200yr",
+      "group": "Velocity",
+      "returnPeriodYears": 200,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 96,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 26,
+      "name": "Velocity_00475yr",
+      "group": "Velocity",
+      "returnPeriodYears": 475,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 100,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 27,
+      "name": "Velocity_00975yr",
+      "group": "Velocity",
+      "returnPeriodYears": 975,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 104,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 28,
+      "name": "Velocity_02475yr",
+      "group": "Velocity",
+      "returnPeriodYears": 2475,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 108,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 29,
+      "name": "Velocity_03000yr",
+      "group": "Velocity",
+      "returnPeriodYears": 3000,
+      "units": "m/s",
+      "byteOffsetWithinRecord": 112,
+      "description": "Maximum flow velocity."
+    },
+    {
+      "index1Based": 30,
+      "name": "MomentumFlux_00072yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 72,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 116,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 31,
+      "name": "MomentumFlux_00100yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 100,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 120,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 32,
+      "name": "MomentumFlux_00200yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 200,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 124,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 33,
+      "name": "MomentumFlux_00475yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 475,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 128,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 34,
+      "name": "MomentumFlux_00975yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 975,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 132,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 35,
+      "name": "MomentumFlux_02475yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 2475,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 136,
+      "description": "Maximum flow momentum flux."
+    },
+    {
+      "index1Based": 36,
+      "name": "MomentumFlux_03000yr",
+      "group": "MomentumFlux",
+      "returnPeriodYears": 3000,
+      "units": "m^3/s^2",
+      "byteOffsetWithinRecord": 140,
+      "description": "Maximum flow momentum flux."
+    }
+  ],
+  "grids": [
+    {
+      "gridName": "01_Crescent_City",
+      "manifest": "01_Crescent_City_manifest.json",
+      "binary": "grids\\01_Crescent_City\\01_Crescent_City_lookup.bin",
+      "numRows": 3535,
+      "numCols": 1780,
+      "numCells": 6.2923E+6,
+      "binaryBytes": 9.060912E+8,
+      "bounds180": {
+        "minLatitude": 41.700888888888883,
+        "maxLatitude": 42.015111111111189,
+        "minLongitude": -124.27911111111109,
+        "maxLongitude": -124.12088888888889
+      },
+      "bounds360": {
+        "minLatitude": 41.700888888888883,
+        "maxLatitude": 42.015111111111189,
+        "minLongitude": 235.72088888888888,
+        "maxLongitude": 235.87911111111114
+      }
+    },
+    {
+      "gridName": "02_Wilson_Creek",
+      "manifest": "02_Wilson_Creek_manifest.json",
+      "binary": "grids\\02_Wilson_Creek\\02_Wilson_Creek_lookup.bin",
+      "numRows": 430,
+      "numCols": 430,
+      "numCells": 184900,
+      "binaryBytes": 2.66256E+7,
+      "bounds180": {
+        "minLatitude": 41.580888888888879,
+        "maxLatitude": 41.619111111111138,
+        "minLongitude": -124.11911111111112,
+        "maxLongitude": -124.08088888888886
+      },
+      "bounds360": {
+        "minLatitude": 41.580888888888879,
+        "maxLatitude": 41.619111111111138,
+        "minLongitude": 235.88088888888888,
+        "maxLongitude": 235.91911111111114
+      }
+    },
+    {
+      "gridName": "03_Klamath",
+      "manifest": "03_Klamath_manifest.json",
+      "binary": "grids\\03_Klamath\\03_Klamath_lookup.bin",
+      "numRows": 880,
+      "numCols": 1555,
+      "numCells": 1.3684E+6,
+      "binaryBytes": 1.970496E+8,
+      "bounds180": {
+        "minLatitude": 41.500888888888881,
+        "maxLatitude": 41.579111111111118,
+        "minLongitude": -124.11911111111112,
+        "maxLongitude": -123.9808888888889
+      },
+      "bounds360": {
+        "minLatitude": 41.500888888888881,
+        "maxLatitude": 41.579111111111118,
+        "minLongitude": 235.88088888888888,
+        "maxLongitude": 236.01911111111113
+      }
+    },
+    {
+      "gridName": "04_Orick",
+      "manifest": "04_Orick_manifest.json",
+      "binary": "grids\\04_Orick\\04_Orick_lookup.bin",
+      "numRows": 655,
+      "numCols": 880,
+      "numCells": 576400,
+      "binaryBytes": 8.30016E+7,
+      "bounds180": {
+        "minLatitude": 41.260888888888886,
+        "maxLatitude": 41.319111111111127,
+        "minLongitude": -124.11911111111112,
+        "maxLongitude": -124.04088888888884
+      },
+      "bounds360": {
+        "minLatitude": 41.260888888888886,
+        "maxLatitude": 41.319111111111127,
+        "minLongitude": 235.88088888888888,
+        "maxLongitude": 235.95911111111113
+      }
+    },
+    {
+      "gridName": "05_Big_Lagoon",
+      "manifest": "05_Big_Lagoon_manifest.json",
+      "binary": "grids\\05_Big_Lagoon\\05_Big_Lagoon_lookup.bin",
+      "numRows": 1150,
+      "numCols": 790,
+      "numCells": 908500,
+      "binaryBytes": 1.30824E+8,
+      "bounds180": {
+        "minLatitude": 41.156888888888886,
+        "maxLatitude": 41.259111111111139,
+        "minLongitude": -124.15111111111116,
+        "maxLongitude": -124.08088888888892
+      },
+      "bounds360": {
+        "minLatitude": 41.156888888888886,
+        "maxLatitude": 41.259111111111139,
+        "minLongitude": 235.84888888888887,
+        "maxLongitude": 235.91911111111111
+      }
+    },
+    {
+      "gridName": "06_Trinidad",
+      "manifest": "06_Trinidad_manifest.json",
+      "binary": "grids\\06_Trinidad\\06_Trinidad_lookup.bin",
+      "numRows": 1375,
+      "numCols": 880,
+      "numCells": 1.21E+6,
+      "binaryBytes": 1.7424E+8,
+      "bounds180": {
+        "minLatitude": 40.948888888888888,
+        "maxLatitude": 41.071111111111158,
+        "minLongitude": -124.17911111111113,
+        "maxLongitude": -124.1008888888889
+      },
+      "bounds360": {
+        "minLatitude": 40.948888888888888,
+        "maxLatitude": 41.071111111111158,
+        "minLongitude": 235.82088888888887,
+        "maxLongitude": 235.89911111111113
+      }
+    },
+    {
+      "gridName": "07_Humboldt_Bay",
+      "manifest": "07_Humboldt_Bay_manifest.json",
+      "binary": "grids\\07_Humboldt_Bay\\07_Humboldt_Bay_lookup.bin",
+      "numRows": 3085,
+      "numCols": 2680,
+      "numCells": 8.2678E+6,
+      "binaryBytes": 1.1905632E+9,
+      "bounds180": {
+        "minLatitude": 40.676888888888882,
+        "maxLatitude": 40.951111111111132,
+        "minLongitude": -124.29911111111113,
+        "maxLongitude": -124.06088888888888
+      },
+      "bounds360": {
+        "minLatitude": 40.676888888888882,
+        "maxLatitude": 40.951111111111132,
+        "minLongitude": 235.70088888888887,
+        "maxLongitude": 235.93911111111112
+      }
+    },
+    {
+      "gridName": "08_Ferndale",
+      "manifest": "08_Ferndale_manifest.json",
+      "binary": "grids\\08_Ferndale\\08_Ferndale_lookup.bin",
+      "numRows": 2230,
+      "numCols": 2905,
+      "numCells": 6.47815E+6,
+      "binaryBytes": 9.328536E+8,
+      "bounds180": {
+        "minLatitude": 40.520888888888877,
+        "maxLatitude": 40.719111111111125,
+        "minLongitude": -124.35911111111113,
+        "maxLongitude": -124.1008888888889
+      },
+      "bounds360": {
+        "minLatitude": 40.520888888888877,
+        "maxLatitude": 40.719111111111125,
+        "minLongitude": 235.64088888888887,
+        "maxLongitude": 235.89911111111113
+      }
+    },
+    {
+      "gridName": "09_Shelter_Cove",
+      "manifest": "09_Shelter_Cove_manifest.json",
+      "binary": "grids\\09_Shelter_Cove\\09_Shelter_Cove_lookup.bin",
+      "numRows": 475,
+      "numCols": 745,
+      "numCells": 353875,
+      "binaryBytes": 5.0958E+7,
+      "bounds180": {
+        "minLatitude": 40.004888888888885,
+        "maxLatitude": 40.047111111111128,
+        "minLongitude": -124.09911111111114,
+        "maxLongitude": -124.03288888888886
+      },
+      "bounds360": {
+        "minLatitude": 40.004888888888885,
+        "maxLatitude": 40.047111111111128,
+        "minLongitude": 235.90088888888889,
+        "maxLongitude": 235.96711111111114
+      }
+    },
+    {
+      "gridName": "10_Fort_Bragg",
+      "manifest": "10_Fort_Bragg_manifest.json",
+      "binary": "grids\\10_Fort_Bragg\\10_Fort_Bragg_lookup.bin",
+      "numRows": 2455,
+      "numCols": 1555,
+      "numCells": 3.817525E+6,
+      "binaryBytes": 5.497236E+8,
+      "bounds180": {
+        "minLatitude": 39.400888888888886,
+        "maxLatitude": 39.61911111111116,
+        "minLongitude": -123.83911111111115,
+        "maxLongitude": -123.70088888888887
+      },
+      "bounds360": {
+        "minLatitude": 39.400888888888886,
+        "maxLatitude": 39.61911111111116,
+        "minLongitude": 236.16088888888888,
+        "maxLongitude": 236.29911111111113
+      }
+    },
+    {
+      "gridName": "11_Cabrillo",
+      "manifest": "11_Cabrillo_manifest.json",
+      "binary": "grids\\11_Cabrillo\\11_Cabrillo_lookup.bin",
+      "numRows": 430,
+      "numCols": 565,
+      "numCells": 242950,
+      "binaryBytes": 3.49848E+7,
+      "bounds180": {
+        "minLatitude": 39.340888888888884,
+        "maxLatitude": 39.379111111111136,
+        "minLongitude": -123.83911111111115,
+        "maxLongitude": -123.78888888888889
+      },
+      "bounds360": {
+        "minLatitude": 39.340888888888884,
+        "maxLatitude": 39.379111111111136,
+        "minLongitude": 236.16088888888888,
+        "maxLongitude": 236.21111111111114
+      }
+    },
+    {
+      "gridName": "12_Albion",
+      "manifest": "12_Albion_manifest.json",
+      "binary": "grids\\12_Albion\\12_Albion_lookup.bin",
+      "numRows": 1555,
+      "numCols": 1780,
+      "numCells": 2.7679E+6,
+      "binaryBytes": 3.985776E+8,
+      "bounds180": {
+        "minLatitude": 39.180888888888887,
+        "maxLatitude": 39.319111111111148,
+        "minLongitude": -123.85911111111113,
+        "maxLongitude": -123.70088888888887
+      },
+      "bounds360": {
+        "minLatitude": 39.180888888888887,
+        "maxLatitude": 39.319111111111148,
+        "minLongitude": 236.14088888888887,
+        "maxLongitude": 236.29911111111113
+      }
+    },
+    {
+      "gridName": "13_Point_Arena",
+      "manifest": "13_Point_Arena_manifest.json",
+      "binary": "grids\\13_Point_Arena\\13_Point_Arena_lookup.bin",
+      "numRows": 1330,
+      "numCols": 880,
+      "numCells": 1.1704E+6,
+      "binaryBytes": 1.685376E+8,
+      "bounds180": {
+        "minLatitude": 38.900888888888886,
+        "maxLatitude": 39.019111111111151,
+        "minLongitude": -123.75911111111111,
+        "maxLongitude": -123.68088888888889
+      },
+      "bounds360": {
+        "minLatitude": 38.900888888888886,
+        "maxLatitude": 39.019111111111151,
+        "minLongitude": 236.24088888888886,
+        "maxLongitude": 236.31911111111111
+      }
+    },
+    {
+      "gridName": "14_Point_Reyes",
+      "manifest": "14_Point_Reyes_manifest.json",
+      "binary": "grids\\14_Point_Reyes\\14_Point_Reyes_lookup.bin",
+      "numRows": 4705,
+      "numCols": 3355,
+      "numCells": 1.5785275E+7,
+      "binaryBytes": 2.2730796E+9,
+      "bounds180": {
+        "minLatitude": 37.960888888888888,
+        "maxLatitude": 38.37911111111115,
+        "minLongitude": -123.09911111111114,
+        "maxLongitude": -122.80088888888884
+      },
+      "bounds360": {
+        "minLatitude": 37.960888888888888,
+        "maxLatitude": 38.37911111111115,
+        "minLongitude": 236.90088888888889,
+        "maxLongitude": 237.19911111111114
+      }
+    },
+    {
+      "gridName": "15_Bolinas",
+      "manifest": "15_Bolinas_manifest.json",
+      "binary": "grids\\15_Bolinas\\15_Bolinas_lookup.bin",
+      "numRows": 1330,
+      "numCols": 1780,
+      "numCells": 2.3674E+6,
+      "binaryBytes": 3.409056E+8,
+      "bounds180": {
+        "minLatitude": 37.840888888888884,
+        "maxLatitude": 37.959111111111135,
+        "minLongitude": -122.71911111111115,
+        "maxLongitude": -122.56088888888883
+      },
+      "bounds360": {
+        "minLatitude": 37.840888888888884,
+        "maxLatitude": 37.959111111111135,
+        "minLongitude": 237.28088888888888,
+        "maxLongitude": 237.43911111111115
+      }
+    },
+    {
+      "gridName": "16_Contra_Costa",
+      "manifest": "16_Contra_Costa_manifest.json",
+      "binary": "grids\\16_Contra_Costa\\16_Contra_Costa_lookup.bin",
+      "numRows": 1960,
+      "numCols": 6865,
+      "numCells": 1.34554E+7,
+      "binaryBytes": 1.9375776E+9,
+      "bounds180": {
+        "minLatitude": 37.984888888888889,
+        "maxLatitude": 38.159111111111116,
+        "minLongitude": -122.33911111111109,
+        "maxLongitude": -121.72888888888883
+      },
+      "bounds360": {
+        "minLatitude": 37.984888888888889,
+        "maxLatitude": 38.159111111111116,
+        "minLongitude": 237.66088888888891,
+        "maxLongitude": 238.27111111111117
+      }
+    },
+    {
+      "gridName": "17_San_Francisco_North",
+      "manifest": "17_San_Francisco_North_manifest.json",
+      "binary": "grids\\17_San_Francisco_North\\17_San_Francisco_North_lookup.bin",
+      "numRows": 2680,
+      "numCols": 4075,
+      "numCells": 1.0921E+7,
+      "binaryBytes": 1.572624E+9,
+      "bounds180": {
+        "minLatitude": 38.000888888888881,
+        "maxLatitude": 38.239111111111114,
+        "minLongitude": -122.6151111111111,
+        "maxLongitude": -122.25288888888883
+      },
+      "bounds360": {
+        "minLatitude": 38.000888888888881,
+        "maxLatitude": 38.239111111111114,
+        "minLongitude": 237.3848888888889,
+        "maxLongitude": 237.74711111111114
+      }
+    },
+    {
+      "gridName": "18_San_Francisco_South",
+      "manifest": "18_San_Francisco_South_manifest.json",
+      "binary": "grids\\18_San_Francisco_South\\18_San_Francisco_South_lookup.bin",
+      "numRows": 5965,
+      "numCols": 4480,
+      "numCells": 2.67232E+7,
+      "binaryBytes": 3.8481408E+9,
+      "bounds180": {
+        "minLatitude": 37.328888888888883,
+        "maxLatitude": 37.859111111111133,
+        "minLongitude": -122.25111111111107,
+        "maxLongitude": -121.85288888888886
+      },
+      "bounds360": {
+        "minLatitude": 37.328888888888883,
+        "maxLatitude": 37.859111111111133,
+        "minLongitude": 237.7488888888889,
+        "maxLongitude": 238.14711111111114
+      }
+    },
+    {
+      "gridName": "19_San_Francisco",
+      "manifest": "19_San_Francisco_manifest.json",
+      "binary": "grids\\19_San_Francisco\\19_San_Francisco_lookup.bin",
+      "numRows": 5830,
+      "numCols": 3355,
+      "numCells": 1.955965E+7,
+      "binaryBytes": 2.8165896E+9,
+      "bounds180": {
+        "minLatitude": 37.480888888888884,
+        "maxLatitude": 37.999111111111155,
+        "minLongitude": -122.55111111111114,
+        "maxLongitude": -122.25288888888883
+      },
+      "bounds360": {
+        "minLatitude": 37.480888888888884,
+        "maxLatitude": 37.999111111111155,
+        "minLongitude": 237.44888888888889,
+        "maxLongitude": 237.74711111111114
+      }
+    },
+    {
+      "gridName": "20_Half_Moon_Bay",
+      "manifest": "20_Half_Moon_Bay_manifest.json",
+      "binary": "grids\\20_Half_Moon_Bay\\20_Half_Moon_Bay_lookup.bin",
+      "numRows": 4255,
+      "numCols": 2230,
+      "numCells": 9.48865E+6,
+      "binaryBytes": 1.3663656E+9,
+      "bounds180": {
+        "minLatitude": 37.200888888888883,
+        "maxLatitude": 37.579111111111168,
+        "minLongitude": -122.55911111111112,
+        "maxLongitude": -122.36088888888889
+      },
+      "bounds360": {
+        "minLatitude": 37.200888888888883,
+        "maxLatitude": 37.579111111111168,
+        "minLongitude": 237.44088888888888,
+        "maxLongitude": 237.63911111111113
+      }
+    },
+    {
+      "gridName": "21_Ano_Nuevo",
+      "manifest": "21_Ano_Nuevo_manifest.json",
+      "binary": "grids\\21_Ano_Nuevo\\21_Ano_Nuevo_lookup.bin",
+      "numRows": 1555,
+      "numCols": 2230,
+      "numCells": 3.46765E+6,
+      "binaryBytes": 4.993416E+8,
+      "bounds180": {
+        "minLatitude": 37.060888888888883,
+        "maxLatitude": 37.199111111111129,
+        "minLongitude": -122.41911111111108,
+        "maxLongitude": -122.22088888888885
+      },
+      "bounds360": {
+        "minLatitude": 37.060888888888883,
+        "maxLatitude": 37.199111111111129,
+        "minLongitude": 237.58088888888889,
+        "maxLongitude": 237.77911111111115
+      }
+    },
+    {
+      "gridName": "22_Santa_Cruz",
+      "manifest": "22_Santa_Cruz_manifest.json",
+      "binary": "grids\\22_Santa_Cruz\\22_Santa_Cruz_lookup.bin",
+      "numRows": 790,
+      "numCols": 2770,
+      "numCells": 2.1883E+6,
+      "binaryBytes": 3.151152E+8,
+      "bounds180": {
+        "minLatitude": 36.940888888888892,
+        "maxLatitude": 37.01111111111112,
+        "minLongitude": -122.09911111111114,
+        "maxLongitude": -121.85288888888886
+      },
+      "bounds360": {
+        "minLatitude": 36.940888888888892,
+        "maxLatitude": 37.01111111111112,
+        "minLongitude": 237.90088888888889,
+        "maxLongitude": 238.14711111111114
+      }
+    },
+    {
+      "gridName": "23_La_Selva",
+      "manifest": "23_La_Selva_manifest.json",
+      "binary": "grids\\23_La_Selva\\23_La_Selva_lookup.bin",
+      "numRows": 1015,
+      "numCols": 1105,
+      "numCells": 1.121575E+6,
+      "binaryBytes": 1.615068E+8,
+      "bounds180": {
+        "minLatitude": 36.860888888888894,
+        "maxLatitude": 36.951111111111153,
+        "minLongitude": -121.8991111111111,
+        "maxLongitude": -121.80088888888884
+      },
+      "bounds360": {
+        "minLatitude": 36.860888888888894,
+        "maxLatitude": 36.951111111111153,
+        "minLongitude": 238.10088888888887,
+        "maxLongitude": 238.19911111111114
+      }
+    },
+    {
+      "gridName": "24_Castroville",
+      "manifest": "24_Castroville_manifest.json",
+      "binary": "grids\\24_Castroville\\24_Castroville_lookup.bin",
+      "numRows": 2680,
+      "numCols": 1285,
+      "numCells": 3.4438E+6,
+      "binaryBytes": 4.959072E+8,
+      "bounds180": {
+        "minLatitude": 36.700888888888883,
+        "maxLatitude": 36.939111111111167,
+        "minLongitude": -121.82311111111107,
+        "maxLongitude": -121.70888888888885
+      },
+      "bounds360": {
+        "minLatitude": 36.700888888888883,
+        "maxLatitude": 36.939111111111167,
+        "minLongitude": 238.1768888888889,
+        "maxLongitude": 238.29111111111115
+      }
+    },
+    {
+      "gridName": "25_Seaside",
+      "manifest": "25_Seaside_manifest.json",
+      "binary": "grids\\25_Seaside\\25_Seaside_lookup.bin",
+      "numRows": 1510,
+      "numCols": 1330,
+      "numCells": 2.0083E+6,
+      "binaryBytes": 2.891952E+8,
+      "bounds180": {
+        "minLatitude": 36.580888888888893,
+        "maxLatitude": 36.715111111111142,
+        "minLongitude": -121.87911111111111,
+        "maxLongitude": -121.76088888888887
+      },
+      "bounds360": {
+        "minLatitude": 36.580888888888893,
+        "maxLatitude": 36.715111111111142,
+        "minLongitude": 238.12088888888889,
+        "maxLongitude": 238.23911111111113
+      }
+    },
+    {
+      "gridName": "26_Monterey",
+      "manifest": "26_Monterey_manifest.json",
+      "binary": "grids\\26_Monterey\\26_Monterey_lookup.bin",
+      "numRows": 1285,
+      "numCols": 1195,
+      "numCells": 1.535575E+6,
+      "binaryBytes": 2.211228E+8,
+      "bounds180": {
+        "minLatitude": 36.540888888888887,
+        "maxLatitude": 36.655111111111125,
+        "minLongitude": -121.98711111111112,
+        "maxLongitude": -121.88088888888888
+      },
+      "bounds360": {
+        "minLatitude": 36.540888888888887,
+        "maxLatitude": 36.655111111111125,
+        "minLongitude": 238.01288888888888,
+        "maxLongitude": 238.11911111111112
+      }
+    },
+    {
+      "gridName": "27_Carmel",
+      "manifest": "27_Carmel_manifest.json",
+      "binary": "grids\\27_Carmel\\27_Carmel_lookup.bin",
+      "numRows": 340,
+      "numCols": 565,
+      "numCells": 192100,
+      "binaryBytes": 2.76624E+7,
+      "bounds180": {
+        "minLatitude": 36.512888888888895,
+        "maxLatitude": 36.543111111111138,
+        "minLongitude": -121.96311111111112,
+        "maxLongitude": -121.91288888888886
+      },
+      "bounds360": {
+        "minLatitude": 36.512888888888895,
+        "maxLatitude": 36.543111111111138,
+        "minLongitude": 238.03688888888888,
+        "maxLongitude": 238.08711111111114
+      }
+    },
+    {
+      "gridName": "28_Yankee_Point",
+      "manifest": "28_Yankee_Point_manifest.json",
+      "binary": "grids\\28_Yankee_Point\\28_Yankee_Point_lookup.bin",
+      "numRows": 475,
+      "numCols": 205,
+      "numCells": 97375,
+      "binaryBytes": 1.4022E+7,
+      "bounds180": {
+        "minLatitude": 36.468888888888884,
+        "maxLatitude": 36.51111111111117,
+        "minLongitude": -121.9471111111111,
+        "maxLongitude": -121.92888888888888
+      },
+      "bounds360": {
+        "minLatitude": 36.468888888888884,
+        "maxLatitude": 36.51111111111117,
+        "minLongitude": 238.05288888888887,
+        "maxLongitude": 238.07111111111112
+      }
+    },
+    {
+      "gridName": "29_San_Carpoforo",
+      "manifest": "29_San_Carpoforo_manifest.json",
+      "binary": "grids\\29_San_Carpoforo\\29_San_Carpoforo_lookup.bin",
+      "numRows": 340,
+      "numCols": 340,
+      "numCells": 115600,
+      "binaryBytes": 1.66464E+7,
+      "bounds180": {
+        "minLatitude": 35.748888888888885,
+        "maxLatitude": 35.779111111111135,
+        "minLongitude": -121.33911111111115,
+        "maxLongitude": -121.30888888888887
+      },
+      "bounds360": {
+        "minLatitude": 35.748888888888885,
+        "maxLatitude": 35.779111111111135,
+        "minLongitude": 238.66088888888888,
+        "maxLongitude": 238.69111111111113
+      }
+    },
+    {
+      "gridName": "30_San_Simeon",
+      "manifest": "30_San_Simeon_manifest.json",
+      "binary": "grids\\30_San_Simeon\\30_San_Simeon_lookup.bin",
+      "numRows": 565,
+      "numCols": 880,
+      "numCells": 497200,
+      "binaryBytes": 7.15968E+7,
+      "bounds180": {
+        "minLatitude": 35.600888888888889,
+        "maxLatitude": 35.651111111111121,
+        "minLongitude": -121.20311111111113,
+        "maxLongitude": -121.1248888888889
+      },
+      "bounds360": {
+        "minLatitude": 35.600888888888889,
+        "maxLatitude": 35.651111111111121,
+        "minLongitude": 238.79688888888887,
+        "maxLongitude": 238.87511111111112
+      }
+    },
+    {
+      "gridName": "31_Cambria",
+      "manifest": "31_Cambria_manifest.json",
+      "binary": "grids\\31_Cambria\\31_Cambria_lookup.bin",
+      "numRows": 475,
+      "numCols": 610,
+      "numCells": 289750,
+      "binaryBytes": 4.1724E+7,
+      "bounds180": {
+        "minLatitude": 35.536888888888882,
+        "maxLatitude": 35.579111111111118,
+        "minLongitude": -121.12711111111116,
+        "maxLongitude": -121.07288888888888
+      },
+      "bounds360": {
+        "minLatitude": 35.536888888888882,
+        "maxLatitude": 35.579111111111118,
+        "minLongitude": 238.87288888888887,
+        "maxLongitude": 238.92711111111112
+      }
+    },
+    {
+      "gridName": "32_Morro_Bay",
+      "manifest": "32_Morro_Bay_manifest.json",
+      "binary": "grids\\32_Morro_Bay\\32_Morro_Bay_lookup.bin",
+      "numRows": 2455,
+      "numCols": 2230,
+      "numCells": 5.47465E+6,
+      "binaryBytes": 7.883496E+8,
+      "bounds180": {
+        "minLatitude": 35.280888888888882,
+        "maxLatitude": 35.499111111111141,
+        "minLongitude": -120.99911111111112,
+        "maxLongitude": -120.80088888888884
+      },
+      "bounds360": {
+        "minLatitude": 35.280888888888882,
+        "maxLatitude": 35.499111111111141,
+        "minLongitude": 239.00088888888888,
+        "maxLongitude": 239.19911111111114
+      }
+    },
+    {
+      "gridName": "33_Diablo_Canyon",
+      "manifest": "33_Diablo_Canyon_manifest.json",
+      "binary": "grids\\33_Diablo_Canyon\\33_Diablo_Canyon_lookup.bin",
+      "numRows": 250,
+      "numCols": 340,
+      "numCells": 85000,
+      "binaryBytes": 1.224E+7,
+      "bounds180": {
+        "minLatitude": 35.196888888888878,
+        "maxLatitude": 35.219111111111118,
+        "minLongitude": -120.86711111111111,
+        "maxLongitude": -120.83688888888889
+      },
+      "bounds360": {
+        "minLatitude": 35.196888888888878,
+        "maxLatitude": 35.219111111111118,
+        "minLongitude": 239.13288888888889,
+        "maxLongitude": 239.16311111111114
+      }
+    },
+    {
+      "gridName": "34_Avila_Beach",
+      "manifest": "34_Avila_Beach_manifest.json",
+      "binary": "grids\\34_Avila_Beach\\34_Avila_Beach_lookup.bin",
+      "numRows": 2905,
+      "numCols": 2500,
+      "numCells": 7.2625E+6,
+      "binaryBytes": 1.0458E+9,
+      "bounds180": {
+        "minLatitude": 34.940888888888892,
+        "maxLatitude": 35.199111111111158,
+        "minLongitude": -120.76711111111115,
+        "maxLongitude": -120.54488888888886
+      },
+      "bounds360": {
+        "minLatitude": 34.940888888888892,
+        "maxLatitude": 35.199111111111158,
+        "minLongitude": 239.23288888888888,
+        "maxLongitude": 239.45511111111114
+      }
+    },
+    {
+      "gridName": "35_Santa_Barbara",
+      "manifest": "35_Santa_Barbara_manifest.json",
+      "binary": "grids\\35_Santa_Barbara\\35_Santa_Barbara_lookup.bin",
+      "numRows": 880,
+      "numCols": 4930,
+      "numCells": 4.3384E+6,
+      "binaryBytes": 6.247296E+8,
+      "bounds180": {
+        "minLatitude": 34.36088888888888,
+        "maxLatitude": 34.4391111111111,
+        "minLongitude": -119.8991111111111,
+        "maxLongitude": -119.46088888888886
+      },
+      "bounds360": {
+        "minLatitude": 34.36088888888888,
+        "maxLatitude": 34.4391111111111,
+        "minLongitude": 240.1008888888889,
+        "maxLongitude": 240.53911111111114
+      }
+    },
+    {
+      "gridName": "36_Rincon",
+      "manifest": "36_Rincon_manifest.json",
+      "binary": "grids\\36_Rincon\\36_Rincon_lookup.bin",
+      "numRows": 880,
+      "numCols": 1555,
+      "numCells": 1.3684E+6,
+      "binaryBytes": 1.970496E+8,
+      "bounds180": {
+        "minLatitude": 34.300888888888878,
+        "maxLatitude": 34.379111111111115,
+        "minLongitude": -119.47911111111114,
+        "maxLongitude": -119.34088888888886
+      },
+      "bounds360": {
+        "minLatitude": 34.300888888888878,
+        "maxLatitude": 34.379111111111115,
+        "minLongitude": 240.52088888888889,
+        "maxLongitude": 240.65911111111114
+      }
+    },
+    {
+      "gridName": "37_Ventura",
+      "manifest": "37_Ventura_manifest.json",
+      "binary": "grids\\37_Ventura\\37_Ventura_lookup.bin",
+      "numRows": 520,
+      "numCols": 745,
+      "numCells": 387400,
+      "binaryBytes": 5.57856E+7,
+      "bounds180": {
+        "minLatitude": 34.24088888888889,
+        "maxLatitude": 34.28711111111113,
+        "minLongitude": -119.32311111111107,
+        "maxLongitude": -119.25688888888885
+      },
+      "bounds360": {
+        "minLatitude": 34.24088888888889,
+        "maxLatitude": 34.28711111111113,
+        "minLongitude": 240.6768888888889,
+        "maxLongitude": 240.74311111111115
+      }
+    },
+    {
+      "gridName": "38_Oxnard",
+      "manifest": "38_Oxnard_manifest.json",
+      "binary": "grids\\38_Oxnard\\38_Oxnard_lookup.bin",
+      "numRows": 1285,
+      "numCols": 880,
+      "numCells": 1.1308E+6,
+      "binaryBytes": 1.628352E+8,
+      "bounds180": {
+        "minLatitude": 34.140888888888881,
+        "maxLatitude": 34.255111111111148,
+        "minLongitude": -119.27911111111109,
+        "maxLongitude": -119.20088888888881
+      },
+      "bounds360": {
+        "minLatitude": 34.140888888888881,
+        "maxLatitude": 34.255111111111148,
+        "minLongitude": 240.72088888888891,
+        "maxLongitude": 240.79911111111116
+      }
+    },
+    {
+      "gridName": "39_Port_Hueneme",
+      "manifest": "39_Port_Hueneme_manifest.json",
+      "binary": "grids\\39_Port_Hueneme\\39_Port_Hueneme_lookup.bin",
+      "numRows": 520,
+      "numCols": 700,
+      "numCells": 364000,
+      "binaryBytes": 5.2416E+7,
+      "bounds180": {
+        "minLatitude": 34.112888888888889,
+        "maxLatitude": 34.159111111111137,
+        "minLongitude": -119.20311111111107,
+        "maxLongitude": -119.14088888888887
+      },
+      "bounds360": {
+        "minLatitude": 34.112888888888889,
+        "maxLatitude": 34.159111111111137,
+        "minLongitude": 240.7968888888889,
+        "maxLongitude": 240.85911111111116
+      }
+    },
+    {
+      "gridName": "40_Point_Mugu",
+      "manifest": "40_Point_Mugu_manifest.json",
+      "binary": "grids\\40_Point_Mugu\\40_Point_Mugu_lookup.bin",
+      "numRows": 610,
+      "numCols": 880,
+      "numCells": 536800,
+      "binaryBytes": 7.72992E+7,
+      "bounds180": {
+        "minLatitude": 34.084888888888884,
+        "maxLatitude": 34.139111111111127,
+        "minLongitude": -119.13911111111111,
+        "maxLongitude": -119.06088888888883
+      },
+      "bounds360": {
+        "minLatitude": 34.084888888888884,
+        "maxLatitude": 34.139111111111127,
+        "minLongitude": 240.86088888888889,
+        "maxLongitude": 240.93911111111115
+      }
+    },
+    {
+      "gridName": "41_Malibu_W",
+      "manifest": "41_Malibu_W_manifest.json",
+      "binary": "grids\\41_Malibu_W\\41_Malibu_W_lookup.bin",
+      "numRows": 430,
+      "numCols": 1465,
+      "numCells": 629950,
+      "binaryBytes": 9.07128E+7,
+      "bounds180": {
+        "minLatitude": 34.020888888888877,
+        "maxLatitude": 34.059111111111108,
+        "minLongitude": -118.96711111111108,
+        "maxLongitude": -118.83688888888889
+      },
+      "bounds360": {
+        "minLatitude": 34.020888888888877,
+        "maxLatitude": 34.059111111111108,
+        "minLongitude": 241.03288888888889,
+        "maxLongitude": 241.16311111111114
+      }
+    },
+    {
+      "gridName": "42_Malibu_E",
+      "manifest": "42_Malibu_E_manifest.json",
+      "binary": "grids\\42_Malibu_E\\42_Malibu_E_lookup.bin",
+      "numRows": 475,
+      "numCols": 3580,
+      "numCells": 1.7005E+6,
+      "binaryBytes": 2.44872E+8,
+      "bounds180": {
+        "minLatitude": 34.000888888888888,
+        "maxLatitude": 34.043111111111116,
+        "minLongitude": -118.83911111111115,
+        "maxLongitude": -118.52088888888886
+      },
+      "bounds360": {
+        "minLatitude": 34.000888888888888,
+        "maxLatitude": 34.043111111111116,
+        "minLongitude": 241.16088888888888,
+        "maxLongitude": 241.47911111111114
+      }
+    },
+    {
+      "gridName": "43_Santa_Monica",
+      "manifest": "43_Santa_Monica_manifest.json",
+      "binary": "grids\\43_Santa_Monica\\43_Santa_Monica_lookup.bin",
+      "numRows": 1105,
+      "numCols": 1105,
+      "numCells": 1.221025E+6,
+      "binaryBytes": 1.758276E+8,
+      "bounds180": {
+        "minLatitude": 33.932888888888883,
+        "maxLatitude": 34.031111111111144,
+        "minLongitude": -118.5191111111111,
+        "maxLongitude": -118.42088888888884
+      },
+      "bounds360": {
+        "minLatitude": 33.932888888888883,
+        "maxLatitude": 34.031111111111144,
+        "minLongitude": 241.48088888888887,
+        "maxLongitude": 241.57911111111113
+      }
+    },
+    {
+      "gridName": "44_Manhattan_Beach",
+      "manifest": "44_Manhattan_Beach_manifest.json",
+      "binary": "grids\\44_Manhattan_Beach\\44_Manhattan_Beach_lookup.bin",
+      "numRows": 790,
+      "numCols": 655,
+      "numCells": 517450,
+      "binaryBytes": 7.45128E+7,
+      "bounds180": {
+        "minLatitude": 33.86088888888888,
+        "maxLatitude": 33.931111111111122,
+        "minLongitude": -118.43911111111112,
+        "maxLongitude": -118.38088888888888
+      },
+      "bounds360": {
+        "minLatitude": 33.86088888888888,
+        "maxLatitude": 33.931111111111122,
+        "minLongitude": 241.56088888888888,
+        "maxLongitude": 241.61911111111112
+      }
+    },
+    {
+      "gridName": "45_Redondo_Beach",
+      "manifest": "45_Redondo_Beach_manifest.json",
+      "binary": "grids\\45_Redondo_Beach\\45_Redondo_Beach_lookup.bin",
+      "numRows": 655,
+      "numCols": 295,
+      "numCells": 193225,
+      "binaryBytes": 2.78244E+7,
+      "bounds180": {
+        "minLatitude": 33.800888888888878,
+        "maxLatitude": 33.859111111111183,
+        "minLongitude": -118.40711111111113,
+        "maxLongitude": -118.38088888888888
+      },
+      "bounds360": {
+        "minLatitude": 33.800888888888878,
+        "maxLatitude": 33.859111111111183,
+        "minLongitude": 241.59288888888889,
+        "maxLongitude": 241.61911111111115
+      }
+    },
+    {
+      "gridName": "46_POLA",
+      "manifest": "46_POLA_manifest.json",
+      "binary": "grids\\46_POLA\\46_POLA_lookup.bin",
+      "numRows": 1260,
+      "numCols": 3265,
+      "numCells": 4.1139E+6,
+      "binaryBytes": 5.924016E+8,
+      "bounds180": {
+        "minLatitude": 33.699111111111108,
+        "maxLatitude": 33.811111111111117,
+        "minLongitude": -118.29911111111113,
+        "maxLongitude": -118.00888888888892
+      },
+      "bounds360": {
+        "minLatitude": 33.699111111111108,
+        "maxLatitude": 33.811111111111117,
+        "minLongitude": 241.70088888888887,
+        "maxLongitude": 241.99111111111111
+      }
+    },
+    {
+      "gridName": "47_Seal_Beach",
+      "manifest": "47_Seal_Beach_manifest.json",
+      "binary": "grids\\47_Seal_Beach\\47_Seal_Beach_lookup.bin",
+      "numRows": 520,
+      "numCols": 430,
+      "numCells": 223600,
+      "binaryBytes": 3.21984E+7,
+      "bounds180": {
+        "minLatitude": 33.720888888888879,
+        "maxLatitude": 33.767111111111149,
+        "minLongitude": -118.13111111111112,
+        "maxLongitude": -118.09288888888887
+      },
+      "bounds360": {
+        "minLatitude": 33.720888888888879,
+        "maxLatitude": 33.767111111111149,
+        "minLongitude": 241.86888888888888,
+        "maxLongitude": 241.90711111111113
+      }
+    },
+    {
+      "gridName": "48_Huntington_Beach",
+      "manifest": "48_Huntington_Beach_manifest.json",
+      "binary": "grids\\48_Huntington_Beach\\48_Huntington_Beach_lookup.bin",
+      "numRows": 1305,
+      "numCols": 1665,
+      "numCells": 2.172825E+6,
+      "binaryBytes": 3.128868E+8,
+      "bounds180": {
+        "minLatitude": 33.611999999999995,
+        "maxLatitude": 33.727999999999966,
+        "minLongitude": -118.07999999999998,
+        "maxLongitude": -117.93200000000002
+      },
+      "bounds360": {
+        "minLatitude": 33.611999999999995,
+        "maxLatitude": 33.727999999999966,
+        "minLongitude": 241.92000000000002,
+        "maxLongitude": 242.06799999999998
+      }
+    },
+    {
+      "gridName": "49_Newport_Beach",
+      "manifest": "49_Newport_Beach_manifest.json",
+      "binary": "grids\\49_Newport_Beach\\49_Newport_Beach_lookup.bin",
+      "numRows": 700,
+      "numCols": 835,
+      "numCells": 584500,
+      "binaryBytes": 8.4168E+7,
+      "bounds180": {
+        "minLatitude": 33.588888888888889,
+        "maxLatitude": 33.651111111111142,
+        "minLongitude": -117.93511111111115,
+        "maxLongitude": -117.86088888888889
+      },
+      "bounds360": {
+        "minLatitude": 33.588888888888889,
+        "maxLatitude": 33.651111111111142,
+        "minLongitude": 242.06488888888887,
+        "maxLongitude": 242.13911111111113
+      }
+    },
+    {
+      "gridName": "50_Crystal_Cove",
+      "manifest": "50_Crystal_Cove_manifest.json",
+      "binary": "grids\\50_Crystal_Cove\\50_Crystal_Cove_lookup.bin",
+      "numRows": 250,
+      "numCols": 295,
+      "numCells": 73750,
+      "binaryBytes": 1.062E+7,
+      "bounds180": {
+        "minLatitude": 33.544888888888877,
+        "maxLatitude": 33.567111111111132,
+        "minLongitude": -117.83111111111111,
+        "maxLongitude": -117.80488888888885
+      },
+      "bounds360": {
+        "minLatitude": 33.544888888888877,
+        "maxLatitude": 33.567111111111132,
+        "minLongitude": 242.16888888888889,
+        "maxLongitude": 242.19511111111115
+      }
+    },
+    {
+      "gridName": "51_Laguna_Beach",
+      "manifest": "51_Laguna_Beach_manifest.json",
+      "binary": "grids\\51_Laguna_Beach\\51_Laguna_Beach_lookup.bin",
+      "numRows": 385,
+      "numCols": 475,
+      "numCells": 182875,
+      "binaryBytes": 2.6334E+7,
+      "bounds180": {
+        "minLatitude": 33.524888888888881,
+        "maxLatitude": 33.559111111111129,
+        "minLongitude": -117.80311111111109,
+        "maxLongitude": -117.76088888888887
+      },
+      "bounds360": {
+        "minLatitude": 33.524888888888881,
+        "maxLatitude": 33.559111111111129,
+        "minLongitude": 242.19688888888888,
+        "maxLongitude": 242.23911111111113
+      }
+    },
+    {
+      "gridName": "52_South_Laguna",
+      "manifest": "52_South_Laguna_manifest.json",
+      "binary": "grids\\52_South_Laguna\\52_South_Laguna_lookup.bin",
+      "numRows": 295,
+      "numCols": 340,
+      "numCells": 100300,
+      "binaryBytes": 1.44432E+7,
+      "bounds180": {
+        "minLatitude": 33.49688888888889,
+        "maxLatitude": 33.523111111111135,
+        "minLongitude": -117.76711111111115,
+        "maxLongitude": -117.73688888888887
+      },
+      "bounds360": {
+        "minLatitude": 33.49688888888889,
+        "maxLatitude": 33.523111111111135,
+        "minLongitude": 242.23288888888888,
+        "maxLongitude": 242.26311111111113
+      }
+    },
+    {
+      "gridName": "53_Monarch_Beach",
+      "manifest": "53_Monarch_Beach_manifest.json",
+      "binary": "grids\\53_Monarch_Beach\\53_Monarch_Beach_lookup.bin",
+      "numRows": 430,
+      "numCols": 385,
+      "numCells": 165550,
+      "binaryBytes": 2.38392E+7,
+      "bounds180": {
+        "minLatitude": 33.460888888888888,
+        "maxLatitude": 33.499111111111134,
+        "minLongitude": -117.74711111111111,
+        "maxLongitude": -117.71288888888887
+      },
+      "bounds360": {
+        "minLatitude": 33.460888888888888,
+        "maxLatitude": 33.499111111111134,
+        "minLongitude": 242.25288888888889,
+        "maxLongitude": 242.28711111111113
+      }
+    },
+    {
+      "gridName": "54_Dana_Point",
+      "manifest": "54_Dana_Point_manifest.json",
+      "binary": "grids\\54_Dana_Point\\54_Dana_Point_lookup.bin",
+      "numRows": 520,
+      "numCols": 835,
+      "numCells": 434200,
+      "binaryBytes": 6.25248E+7,
+      "bounds180": {
+        "minLatitude": 33.432888888888883,
+        "maxLatitude": 33.479111111111131,
+        "minLongitude": -117.70711111111109,
+        "maxLongitude": -117.63288888888883
+      },
+      "bounds360": {
+        "minLatitude": 33.432888888888883,
+        "maxLatitude": 33.479111111111131,
+        "minLongitude": 242.29288888888888,
+        "maxLongitude": 242.36711111111114
+      }
+    },
+    {
+      "gridName": "55_San_Clemente",
+      "manifest": "55_San_Clemente_manifest.json",
+      "binary": "grids\\55_San_Clemente\\55_San_Clemente_lookup.bin",
+      "numRows": 430,
+      "numCols": 520,
+      "numCells": 223600,
+      "binaryBytes": 3.21984E+7,
+      "bounds180": {
+        "minLatitude": 33.392888888888891,
+        "maxLatitude": 33.431111111111122,
+        "minLongitude": -117.63911111111111,
+        "maxLongitude": -117.59288888888887
+      },
+      "bounds360": {
+        "minLatitude": 33.392888888888891,
+        "maxLatitude": 33.431111111111122,
+        "minLongitude": 242.36088888888887,
+        "maxLongitude": 242.40711111111111
+      }
+    },
+    {
+      "gridName": "56_San_Onofre",
+      "manifest": "56_San_Onofre_manifest.json",
+      "binary": "grids\\56_San_Onofre\\56_San_Onofre_lookup.bin",
+      "numRows": 405,
+      "numCols": 655,
+      "numCells": 265275,
+      "binaryBytes": 3.81996E+7,
+      "bounds180": {
+        "minLatitude": 33.356888888888889,
+        "maxLatitude": 33.392888888888891,
+        "minLongitude": -117.59911111111114,
+        "maxLongitude": -117.54088888888884
+      },
+      "bounds360": {
+        "minLatitude": 33.356888888888889,
+        "maxLatitude": 33.392888888888891,
+        "minLongitude": 242.40088888888889,
+        "maxLongitude": 242.45911111111113
+      }
+    },
+    {
+      "gridName": "57_Oceanside",
+      "manifest": "57_Oceanside_manifest.json",
+      "binary": "grids\\57_Oceanside\\57_Oceanside_lookup.bin",
+      "numRows": 880,
+      "numCols": 1150,
+      "numCells": 1.012E+6,
+      "binaryBytes": 1.45728E+8,
+      "bounds180": {
+        "minLatitude": 33.160888888888877,
+        "maxLatitude": 33.239111111111114,
+        "minLongitude": -117.41111111111115,
+        "maxLongitude": -117.30888888888887
+      },
+      "bounds360": {
+        "minLatitude": 33.160888888888877,
+        "maxLatitude": 33.239111111111114,
+        "minLongitude": 242.58888888888887,
+        "maxLongitude": 242.69111111111113
+      }
+    },
+    {
+      "gridName": "58_Carlsbad",
+      "manifest": "58_Carlsbad_manifest.json",
+      "binary": "grids\\58_Carlsbad\\58_Carlsbad_lookup.bin",
+      "numRows": 655,
+      "numCols": 745,
+      "numCells": 487975,
+      "binaryBytes": 7.02684E+7,
+      "bounds180": {
+        "minLatitude": 33.100888888888889,
+        "maxLatitude": 33.159111111111137,
+        "minLongitude": -117.35911111111113,
+        "maxLongitude": -117.29288888888885
+      },
+      "bounds360": {
+        "minLatitude": 33.100888888888889,
+        "maxLatitude": 33.159111111111137,
+        "minLongitude": 242.6408888888889,
+        "maxLongitude": 242.70711111111115
+      }
+    },
+    {
+      "gridName": "59_Encinitas",
+      "manifest": "59_Encinitas_manifest.json",
+      "binary": "grids\\59_Encinitas\\59_Encinitas_lookup.bin",
+      "numRows": 880,
+      "numCols": 1015,
+      "numCells": 893200,
+      "binaryBytes": 1.286208E+8,
+      "bounds180": {
+        "minLatitude": 33.020888888888877,
+        "maxLatitude": 33.099111111111128,
+        "minLongitude": -117.31911111111111,
+        "maxLongitude": -117.22888888888883
+      },
+      "bounds360": {
+        "minLatitude": 33.020888888888877,
+        "maxLatitude": 33.099111111111128,
+        "minLongitude": 242.68088888888889,
+        "maxLongitude": 242.77111111111114
+      }
+    },
+    {
+      "gridName": "60_Del_Mar",
+      "manifest": "60_Del_Mar_manifest.json",
+      "binary": "grids\\60_Del_Mar\\60_Del_Mar_lookup.bin",
+      "numRows": 1060,
+      "numCols": 635,
+      "numCells": 673100,
+      "binaryBytes": 9.69264E+7,
+      "bounds180": {
+        "minLatitude": 32.924888888888887,
+        "maxLatitude": 33.019111111111172,
+        "minLongitude": -117.28933333333333,
+        "maxLongitude": -117.23288888888885
+      },
+      "bounds360": {
+        "minLatitude": 32.924888888888887,
+        "maxLatitude": 33.019111111111172,
+        "minLongitude": 242.71066666666667,
+        "maxLongitude": 242.76711111111115
+      }
+    },
+    {
+      "gridName": "61_La_Jolla",
+      "manifest": "61_La_Jolla_manifest.json",
+      "binary": "grids\\61_La_Jolla\\61_La_Jolla_lookup.bin",
+      "numRows": 655,
+      "numCols": 475,
+      "numCells": 311125,
+      "binaryBytes": 4.4802E+7,
+      "bounds180": {
+        "minLatitude": 32.840888888888884,
+        "maxLatitude": 32.899111111111146,
+        "minLongitude": -117.27111111111111,
+        "maxLongitude": -117.22888888888883
+      },
+      "bounds360": {
+        "minLatitude": 32.840888888888884,
+        "maxLatitude": 32.899111111111146,
+        "minLongitude": 242.72888888888889,
+        "maxLongitude": 242.77111111111114
+      }
+    },
+    {
+      "gridName": "62_San_Diego",
+      "manifest": "62_San_Diego_manifest.json",
+      "binary": "grids\\62_San_Diego\\62_San_Diego_lookup.bin",
+      "numRows": 2905,
+      "numCols": 2230,
+      "numCells": 6.47815E+6,
+      "binaryBytes": 9.328536E+8,
+      "bounds180": {
+        "minLatitude": 32.560888888888883,
+        "maxLatitude": 32.819111111111148,
+        "minLongitude": -117.27911111111109,
+        "maxLongitude": -117.08088888888886
+      },
+      "bounds360": {
+        "minLatitude": 32.560888888888883,
+        "maxLatitude": 32.819111111111148,
+        "minLongitude": 242.72088888888888,
+        "maxLongitude": 242.91911111111114
+      }
+    },
+    {
+      "gridName": "63_Alameda",
+      "manifest": "63_Alameda_manifest.json",
+      "binary": "grids\\63_Alameda\\63_Alameda_lookup.bin",
+      "numRows": 2565,
+      "numCols": 4860,
+      "numCells": 1.24659E+7,
+      "binaryBytes": 1.7950896E+9,
+      "bounds180": {
+        "minLatitude": 37.623999999999995,
+        "maxLatitude": 37.851999999999975,
+        "minLongitude": -122.55199999999996,
+        "maxLongitude": -122.12
+      },
+      "bounds360": {
+        "minLatitude": 37.623999999999995,
+        "maxLatitude": 37.851999999999975,
+        "minLongitude": 237.44800000000004,
+        "maxLongitude": 237.88
+      }
+    }
+  ]
+}
