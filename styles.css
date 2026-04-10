@@ -241,6 +241,78 @@ canvas {
   line-height: 1.42;
 }
 
+.inundation-legend {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  min-width: 160px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  box-shadow: 0 14px 32px rgba(9, 26, 42, 0.22);
+  z-index: 500;
+  pointer-events: none;
+}
+
+.inundation-legend h3 {
+  font-size: 0.82rem;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.inundation-legend ul {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.inundation-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  color: var(--navy);
+}
+
+.legend-swatch {
+  width: 18px;
+  height: 0;
+  border-top: 3px solid transparent;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.swatch-72 {
+  border-top-color: #2f6df6;
+}
+
+.swatch-100 {
+  border-top-color: #15aabf;
+}
+
+.swatch-200 {
+  border-top-color: #2da44e;
+}
+
+.swatch-475 {
+  border-top-color: #d4a017;
+}
+
+.swatch-975 {
+  border-top-color: #f08c00;
+}
+
+.swatch-2475 {
+  border-top-color: #e56752;
+}
+
+.swatch-3000 {
+  border-top-color: #b42318;
+}
+
 .empty-state p,
 .selection-banner {
   margin: 10px 0 0;
@@ -487,6 +559,11 @@ canvas {
   .map-overlay-card {
     max-width: 220px;
   }
+
+  .inundation-legend {
+    left: 14px;
+    bottom: 14px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -518,5 +595,12 @@ canvas {
   .map-overlay-card {
     justify-self: start;
     max-width: 250px;
+  }
+
+  .inundation-legend {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    min-width: 0;
   }
 }

@@ -2,9 +2,14 @@ const RETURN_PERIODS = [72, 100, 200, 475, 975, 2475, 3000];
 const RECORD_FLOAT_COUNT = 36;
 const DEFAULT_MAP_CENTER = [36.85, -120.15];
 const DEFAULT_MAP_ZOOM = 6;
+const INUNDATION_MIN_ZOOM = 8;
 const FEET_PER_METER = 3.280839895;
 const CUBIC_FEET_PER_CUBIC_METER = 35.314666721;
-const { metadataRoot: METADATA_ROOT, binaryRoot: BINARY_ROOT } = resolveDataRoots();
+const {
+  metadataRoot: METADATA_ROOT,
+  binaryRoot: BINARY_ROOT,
+  inundationRoot: INUNDATION_ROOT,
+} = resolveDataRoots();
 
 const COLORS = {
   navy: "#11314c",
@@ -15,11 +20,27 @@ const COLORS = {
   slate: "#60748a",
 };
 
+const INUNDATION_COLORS = new Map([
+  [72, "#2f6df6"],
+  [100, "#15aabf"],
+  [200, "#2da44e"],
+  [475, "#d4a017"],
+  [975, "#f08c00"],
+  [2475, "#e56752"],
+  [3000, "#b42318"],
+]);
+
 const state = {
   index: null,
+  inundationIndex: null,
   map: null,
   gridLayerGroup: null,
+  inundationLayerGroup: null,
   gridRectangles: new Map(),
+  inundationCache: new Map(),
+  inundationGridLayers: new Map(),
+  inundationLegendVisible: false,
+  inundationUpdateToken: 0,
   selectedMarker: null,
   selectedGridName: null,
   selectedSelection: null,
@@ -44,6 +65,7 @@ const dom = {
   depthChartCanvas: document.getElementById("depthChartCanvas"),
   combinedChartCanvas: document.getElementById("combinedChartCanvas"),
   unitToggleButtons: Array.from(document.querySelectorAll(".unit-toggle-button")),
+  inundationLegend: document.getElementById("inundationLegend"),
 };
 
 const emptyStateMessagePlugin = {
@@ -97,6 +119,7 @@ init().catch((error) => {
 async function init() {
   setBanner("Loading factored grid index...", "info");
   state.index = normalizeIndex(await fetchJSON(buildMetadataUrl("index.json")));
+  state.inundationIndex = await loadInundationIndex();
   initCharts();
   initMap();
   initUnitToggle();
@@ -192,6 +215,7 @@ function initMap() {
   ).addTo(state.map);
 
   state.gridLayerGroup = L.featureGroup().addTo(state.map);
+  state.inundationLayerGroup = L.featureGroup().addTo(state.map);
 
   state.index.grids.forEach((grid) => {
     const bounds = toLeafletBounds(grid.bounds180);
@@ -211,6 +235,11 @@ function initMap() {
       setBanner(error.message || "The lookup request failed.", "error");
     });
   });
+  state.map.on("moveend zoomend", () => {
+    updateInundationOverlays().catch((error) => {
+      console.error("Failed to update inundation overlays.", error);
+    });
+  });
 
   const refreshInitialView = () => {
     state.map.invalidateSize(false);
@@ -223,6 +252,11 @@ function initMap() {
   window.requestAnimationFrame(() => {
     refreshInitialView();
     window.setTimeout(refreshInitialView, 250);
+    window.setTimeout(() => {
+      updateInundationOverlays().catch((error) => {
+        console.error("Failed to update inundation overlays.", error);
+      });
+    }, 300);
   });
 }
 
@@ -717,6 +751,179 @@ function getGridRectangleStyle(isSelected) {
   };
 }
 
+async function loadInundationIndex() {
+  try {
+    return await fetchJSON(buildInundationUrl("index.json"));
+  } catch (error) {
+    console.warn("Unable to load inundation-limit index.", error);
+    return null;
+  }
+}
+
+async function updateInundationOverlays() {
+  const updateToken = ++state.inundationUpdateToken;
+
+  if (!state.map || !state.inundationLayerGroup || !state.inundationIndex) {
+    clearInundationOverlays();
+    hideInundationLegend();
+    return;
+  }
+
+  if (!shouldRenderInundationOverlays()) {
+    clearInundationOverlays();
+    hideInundationLegend();
+    return;
+  }
+
+  const viewBounds = state.map.getBounds();
+  const visibleGrids = (state.inundationIndex.grids || [])
+    .filter((grid) => intersectsMapBounds(viewBounds, grid.bounds180));
+  const desiredGridNames = new Set(visibleGrids.map((grid) => grid.gridName));
+
+  state.inundationGridLayers.forEach((layerGroup, gridName) => {
+    if (!desiredGridNames.has(gridName)) {
+      state.inundationLayerGroup.removeLayer(layerGroup);
+      state.inundationGridLayers.delete(gridName);
+    }
+  });
+
+  for (const grid of visibleGrids) {
+    if (updateToken !== state.inundationUpdateToken || !shouldRenderInundationOverlays()) {
+      return;
+    }
+
+    if (state.inundationGridLayers.has(grid.gridName)) {
+      continue;
+    }
+
+    const layerGroup = await buildInundationLayerForGrid(grid.gridName);
+    const stillVisible = intersectsMapBounds(state.map.getBounds(), grid.bounds180);
+    if (
+      updateToken !== state.inundationUpdateToken ||
+      !shouldRenderInundationOverlays() ||
+      !layerGroup ||
+      !desiredGridNames.has(grid.gridName) ||
+      !stillVisible
+    ) {
+      continue;
+    }
+
+    layerGroup.addTo(state.inundationLayerGroup);
+    state.inundationGridLayers.set(grid.gridName, layerGroup);
+  }
+
+  if (updateToken !== state.inundationUpdateToken || !shouldRenderInundationOverlays()) {
+    return;
+  }
+
+  if (state.inundationGridLayers.size > 0) {
+    showInundationLegend();
+  } else {
+    hideInundationLegend();
+  }
+}
+
+function clearInundationOverlays() {
+  if (!state.inundationLayerGroup) {
+    state.inundationGridLayers.clear();
+    return;
+  }
+
+  state.inundationGridLayers.forEach((layerGroup) => {
+    state.inundationLayerGroup.removeLayer(layerGroup);
+  });
+  state.inundationGridLayers.clear();
+}
+
+async function buildInundationLayerForGrid(gridName) {
+  const inundationData = await getInundationGridData(gridName);
+  if (!inundationData) {
+    return null;
+  }
+
+  const layerGroup = L.layerGroup();
+
+  for (const contourSet of inundationData.contourSets || []) {
+    const color = INUNDATION_COLORS.get(Number(contourSet.returnPeriodYears)) || COLORS.coral;
+    const latLngGroups = (contourSet.segments || [])
+      .map((segment) => Array.isArray(segment.coordinates)
+        ? segment.coordinates.map((coordinate) => [Number(coordinate[1]), Number(coordinate[0])])
+        : [])
+      .filter((coordinates) => coordinates.length >= 2);
+
+    if (!latLngGroups.length) {
+      continue;
+    }
+
+    L.polyline(latLngGroups, {
+      color,
+      weight: 1.9,
+      opacity: 0.95,
+      smoothFactor: 0.4,
+      interactive: false,
+      bubblingMouseEvents: false,
+    }).addTo(layerGroup);
+  }
+
+  if (!layerGroup.getLayers().length) {
+    return null;
+  }
+
+  return layerGroup;
+}
+
+async function getInundationGridData(gridName) {
+  if (!state.inundationIndex) {
+    return null;
+  }
+
+  if (state.inundationCache.has(gridName)) {
+    return state.inundationCache.get(gridName);
+  }
+
+  const entry = (state.inundationIndex.grids || []).find((grid) => grid.gridName === gridName);
+  if (!entry?.jsonFile) {
+    state.inundationCache.set(gridName, null);
+    return null;
+  }
+
+  try {
+    const promise = fetchJSON(buildInundationUrl(entry.jsonFile));
+    state.inundationCache.set(gridName, promise);
+    const data = await promise;
+    state.inundationCache.set(gridName, data);
+    return data;
+  } catch (error) {
+    console.warn(`Unable to load inundation limits for ${gridName}.`, error);
+    state.inundationCache.set(gridName, null);
+    return null;
+  }
+}
+
+function intersectsMapBounds(mapBounds, bounds180) {
+  return mapBounds.intersects(L.latLngBounds(toLeafletBounds(bounds180)));
+}
+
+function shouldRenderInundationOverlays() {
+  return Boolean(state.map) && state.map.getZoom() >= INUNDATION_MIN_ZOOM;
+}
+
+function showInundationLegend() {
+  if (state.inundationLegendVisible) {
+    return;
+  }
+  dom.inundationLegend.classList.remove("hidden");
+  state.inundationLegendVisible = true;
+}
+
+function hideInundationLegend() {
+  if (!dom.inundationLegend) {
+    return;
+  }
+  dom.inundationLegend.classList.add("hidden");
+  state.inundationLegendVisible = false;
+}
+
 function containsLatLng(latlng, bounds180) {
   return latlng.lat >= Number(bounds180.minLatitude) &&
     latlng.lat <= Number(bounds180.maxLatitude) &&
@@ -804,13 +1011,16 @@ function resolveDataRoots() {
   const sharedGlobalValue = globalThis.PTHA_DATA_BASE_URL;
   const metadataQueryValue = url.searchParams.get("metadataBaseUrl");
   const binaryQueryValue = url.searchParams.get("binaryBaseUrl");
+  const inundationQueryValue = url.searchParams.get("inundationBaseUrl");
   const metadataGlobalValue = globalThis.PTHA_METADATA_BASE_URL;
   const binaryGlobalValue = globalThis.PTHA_BINARY_BASE_URL;
+  const inundationGlobalValue = globalThis.PTHA_INUNDATION_BASE_URL;
   const sharedValue = sharedQueryValue || sharedGlobalValue;
 
   return {
     metadataRoot: normalizeDataRoot(metadataQueryValue || metadataGlobalValue || sharedValue || "./metadata"),
     binaryRoot: normalizeDataRoot(binaryQueryValue || binaryGlobalValue || sharedValue || "./data_factored"),
+    inundationRoot: normalizeDataRoot(inundationQueryValue || inundationGlobalValue || "./inundation_limits"),
   };
 }
 
@@ -824,6 +1034,10 @@ function buildMetadataUrl(relativePath) {
 
 function buildBinaryUrl(relativePath) {
   return `${BINARY_ROOT}/${normalizeRelativePath(relativePath).replace(/^\/+/, "")}`;
+}
+
+function buildInundationUrl(relativePath) {
+  return `${INUNDATION_ROOT}/${normalizeRelativePath(relativePath).replace(/^\/+/, "")}`;
 }
 
 function formatGridDisplayName(gridName) {

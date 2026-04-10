@@ -1,0 +1,838 @@
+{
+  "title": "PTHA inundation-limit database",
+  "createdUtc": "2026-04-10T07:01:20Z",
+  "thresholdMeters": 0.03,
+  "returnPeriodsYears": [
+    72,
+    100,
+    200,
+    475,
+    975,
+    2475,
+    3000
+  ],
+  "dryLandDefinition": "Topo > 0 m rel. MHW",
+  "inundationDefinition": "FlowDepth >= 0.03 m",
+  "contourMeaning": "Landward inundation-limit contours only; ocean-facing shoreline boundary excluded",
+  "grids": [
+    {
+      "gridName": "01_Crescent_City",
+      "jsonFile": "01_Crescent_City_inundation_limits.json",
+      "diagnosticPngFile": "01_Crescent_City_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 41.700888888888883,
+        "maxLatitude": 42.015111111111189,
+        "minLongitude": -124.27911111111109,
+        "maxLongitude": -124.12088888888889
+      },
+      "dryLandCellCount": 3.382481E+6,
+      "totalContourSegments": 5079
+    },
+    {
+      "gridName": "02_Wilson_Creek",
+      "jsonFile": "02_Wilson_Creek_inundation_limits.json",
+      "diagnosticPngFile": "02_Wilson_Creek_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 41.580888888888879,
+        "maxLatitude": 41.619111111111138,
+        "minLongitude": -124.11911111111112,
+        "maxLongitude": -124.08088888888886
+      },
+      "dryLandCellCount": 112763,
+      "totalContourSegments": 381
+    },
+    {
+      "gridName": "03_Klamath",
+      "jsonFile": "03_Klamath_inundation_limits.json",
+      "diagnosticPngFile": "03_Klamath_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 41.500888888888881,
+        "maxLatitude": 41.579111111111118,
+        "minLongitude": -124.11911111111112,
+        "maxLongitude": -123.9808888888889
+      },
+      "dryLandCellCount": 1.00298E+6,
+      "totalContourSegments": 2567
+    },
+    {
+      "gridName": "04_Orick",
+      "jsonFile": "04_Orick_inundation_limits.json",
+      "diagnosticPngFile": "04_Orick_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 41.260888888888886,
+        "maxLatitude": 41.319111111111127,
+        "minLongitude": -124.11911111111112,
+        "maxLongitude": -124.04088888888884
+      },
+      "dryLandCellCount": 367252,
+      "totalContourSegments": 805
+    },
+    {
+      "gridName": "05_Big_Lagoon",
+      "jsonFile": "05_Big_Lagoon_inundation_limits.json",
+      "diagnosticPngFile": "05_Big_Lagoon_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 41.156888888888886,
+        "maxLatitude": 41.259111111111139,
+        "minLongitude": -124.15111111111116,
+        "maxLongitude": -124.08088888888892
+      },
+      "dryLandCellCount": 349797,
+      "totalContourSegments": 1453
+    },
+    {
+      "gridName": "06_Trinidad",
+      "jsonFile": "06_Trinidad_inundation_limits.json",
+      "diagnosticPngFile": "06_Trinidad_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 40.948888888888888,
+        "maxLatitude": 41.071111111111158,
+        "minLongitude": -124.17911111111113,
+        "maxLongitude": -124.1008888888889
+      },
+      "dryLandCellCount": 360673,
+      "totalContourSegments": 2342
+    },
+    {
+      "gridName": "07_Humboldt_Bay",
+      "jsonFile": "07_Humboldt_Bay_inundation_limits.json",
+      "diagnosticPngFile": "07_Humboldt_Bay_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 40.676888888888882,
+        "maxLatitude": 40.951111111111132,
+        "minLongitude": -124.29911111111113,
+        "maxLongitude": -124.06088888888888
+      },
+      "dryLandCellCount": 3.722166E+6,
+      "totalContourSegments": 27823
+    },
+    {
+      "gridName": "08_Ferndale",
+      "jsonFile": "08_Ferndale_inundation_limits.json",
+      "diagnosticPngFile": "08_Ferndale_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 40.520888888888877,
+        "maxLatitude": 40.719111111111125,
+        "minLongitude": -124.35911111111113,
+        "maxLongitude": -124.1008888888889
+      },
+      "dryLandCellCount": 5.271398E+6,
+      "totalContourSegments": 7978
+    },
+    {
+      "gridName": "09_Shelter_Cove",
+      "jsonFile": "09_Shelter_Cove_inundation_limits.json",
+      "diagnosticPngFile": "09_Shelter_Cove_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 40.004888888888885,
+        "maxLatitude": 40.047111111111128,
+        "minLongitude": -124.09911111111114,
+        "maxLongitude": -124.03288888888886
+      },
+      "dryLandCellCount": 152024,
+      "totalContourSegments": 799
+    },
+    {
+      "gridName": "10_Fort_Bragg",
+      "jsonFile": "10_Fort_Bragg_inundation_limits.json",
+      "diagnosticPngFile": "10_Fort_Bragg_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 39.400888888888886,
+        "maxLatitude": 39.61911111111116,
+        "minLongitude": -123.83911111111115,
+        "maxLongitude": -123.70088888888887
+      },
+      "dryLandCellCount": 2.538747E+6,
+      "totalContourSegments": 5305
+    },
+    {
+      "gridName": "11_Cabrillo",
+      "jsonFile": "11_Cabrillo_inundation_limits.json",
+      "diagnosticPngFile": "11_Cabrillo_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 39.340888888888884,
+        "maxLatitude": 39.379111111111136,
+        "minLongitude": -123.83911111111115,
+        "maxLongitude": -123.78888888888889
+      },
+      "dryLandCellCount": 164338,
+      "totalContourSegments": 1285
+    },
+    {
+      "gridName": "12_Albion",
+      "jsonFile": "12_Albion_inundation_limits.json",
+      "diagnosticPngFile": "12_Albion_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 39.180888888888887,
+        "maxLatitude": 39.319111111111148,
+        "minLongitude": -123.85911111111113,
+        "maxLongitude": -123.70088888888887
+      },
+      "dryLandCellCount": 1.461889E+6,
+      "totalContourSegments": 4480
+    },
+    {
+      "gridName": "13_Point_Arena",
+      "jsonFile": "13_Point_Arena_inundation_limits.json",
+      "diagnosticPngFile": "13_Point_Arena_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 38.900888888888886,
+        "maxLatitude": 39.019111111111151,
+        "minLongitude": -123.75911111111111,
+        "maxLongitude": -123.68088888888889
+      },
+      "dryLandCellCount": 509339,
+      "totalContourSegments": 2170
+    },
+    {
+      "gridName": "14_Point_Reyes",
+      "jsonFile": "14_Point_Reyes_inundation_limits.json",
+      "diagnosticPngFile": "14_Point_Reyes_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 37.960888888888888,
+        "maxLatitude": 38.37911111111115,
+        "minLongitude": -123.09911111111114,
+        "maxLongitude": -122.80088888888884
+      },
+      "dryLandCellCount": 8.279481E+6,
+      "totalContourSegments": 29053
+    },
+    {
+      "gridName": "15_Bolinas",
+      "jsonFile": "15_Bolinas_inundation_limits.json",
+      "diagnosticPngFile": "15_Bolinas_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 37.840888888888884,
+        "maxLatitude": 37.959111111111135,
+        "minLongitude": -122.71911111111115,
+        "maxLongitude": -122.56088888888883
+      },
+      "dryLandCellCount": 1.398643E+6,
+      "totalContourSegments": 2117
+    },
+    {
+      "gridName": "16_Contra_Costa",
+      "jsonFile": "16_Contra_Costa_inundation_limits.json",
+      "diagnosticPngFile": "16_Contra_Costa_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 37.984888888888889,
+        "maxLatitude": 38.159111111111116,
+        "minLongitude": -122.33911111111109,
+        "maxLongitude": -121.72888888888883
+      },
+      "dryLandCellCount": 8.53145E+6,
+      "totalContourSegments": 76822
+    },
+    {
+      "gridName": "17_San_Francisco_North",
+      "jsonFile": "17_San_Francisco_North_inundation_limits.json",
+      "diagnosticPngFile": "17_San_Francisco_North_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 38.000888888888881,
+        "maxLatitude": 38.239111111111114,
+        "minLongitude": -122.6151111111111,
+        "maxLongitude": -122.25288888888883
+      },
+      "dryLandCellCount": 5.298246E+6,
+      "totalContourSegments": 69654
+    },
+    {
+      "gridName": "18_San_Francisco_South",
+      "jsonFile": "18_San_Francisco_South_inundation_limits.json",
+      "diagnosticPngFile": "18_San_Francisco_South_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 37.328888888888883,
+        "maxLatitude": 37.859111111111133,
+        "minLongitude": -122.25111111111107,
+        "maxLongitude": -121.85288888888886
+      },
+      "dryLandCellCount": 2.1567689E+7,
+      "totalContourSegments": 85064
+    },
+    {
+      "gridName": "19_San_Francisco",
+      "jsonFile": "19_San_Francisco_inundation_limits.json",
+      "diagnosticPngFile": "19_San_Francisco_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 37.480888888888884,
+        "maxLatitude": 37.999111111111155,
+        "minLongitude": -122.55111111111114,
+        "maxLongitude": -122.25288888888883
+      },
+      "dryLandCellCount": 1.0694299E+7,
+      "totalContourSegments": 64808
+    },
+    {
+      "gridName": "20_Half_Moon_Bay",
+      "jsonFile": "20_Half_Moon_Bay_inundation_limits.json",
+      "diagnosticPngFile": "20_Half_Moon_Bay_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 37.200888888888883,
+        "maxLatitude": 37.579111111111168,
+        "minLongitude": -122.55911111111112,
+        "maxLongitude": -122.36088888888889
+      },
+      "dryLandCellCount": 3.803072E+6,
+      "totalContourSegments": 3620
+    },
+    {
+      "gridName": "21_Ano_Nuevo",
+      "jsonFile": "21_Ano_Nuevo_inundation_limits.json",
+      "diagnosticPngFile": "21_Ano_Nuevo_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 37.060888888888883,
+        "maxLatitude": 37.199111111111129,
+        "minLongitude": -122.41911111111108,
+        "maxLongitude": -122.22088888888885
+      },
+      "dryLandCellCount": 1.865353E+6,
+      "totalContourSegments": 2962
+    },
+    {
+      "gridName": "22_Santa_Cruz",
+      "jsonFile": "22_Santa_Cruz_inundation_limits.json",
+      "diagnosticPngFile": "22_Santa_Cruz_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 36.940888888888892,
+        "maxLatitude": 37.01111111111112,
+        "minLongitude": -122.09911111111114,
+        "maxLongitude": -121.85288888888886
+      },
+      "dryLandCellCount": 1.628545E+6,
+      "totalContourSegments": 2710
+    },
+    {
+      "gridName": "23_La_Selva",
+      "jsonFile": "23_La_Selva_inundation_limits.json",
+      "diagnosticPngFile": "23_La_Selva_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 36.860888888888894,
+        "maxLatitude": 36.951111111111153,
+        "minLongitude": -121.8991111111111,
+        "maxLongitude": -121.80088888888884
+      },
+      "dryLandCellCount": 512978,
+      "totalContourSegments": 971
+    },
+    {
+      "gridName": "24_Castroville",
+      "jsonFile": "24_Castroville_inundation_limits.json",
+      "diagnosticPngFile": "24_Castroville_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 36.700888888888883,
+        "maxLatitude": 36.939111111111167,
+        "minLongitude": -121.82311111111107,
+        "maxLongitude": -121.70888888888885
+      },
+      "dryLandCellCount": 2.810683E+6,
+      "totalContourSegments": 11796
+    },
+    {
+      "gridName": "25_Seaside",
+      "jsonFile": "25_Seaside_inundation_limits.json",
+      "diagnosticPngFile": "25_Seaside_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 36.580888888888893,
+        "maxLatitude": 36.715111111111142,
+        "minLongitude": -121.87911111111111,
+        "maxLongitude": -121.76088888888887
+      },
+      "dryLandCellCount": 1.285551E+6,
+      "totalContourSegments": 1357
+    },
+    {
+      "gridName": "26_Monterey",
+      "jsonFile": "26_Monterey_inundation_limits.json",
+      "diagnosticPngFile": "26_Monterey_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 36.540888888888887,
+        "maxLatitude": 36.655111111111125,
+        "minLongitude": -121.98711111111112,
+        "maxLongitude": -121.88088888888888
+      },
+      "dryLandCellCount": 729514,
+      "totalContourSegments": 2831
+    },
+    {
+      "gridName": "27_Carmel",
+      "jsonFile": "27_Carmel_inundation_limits.json",
+      "diagnosticPngFile": "27_Carmel_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 36.512888888888895,
+        "maxLatitude": 36.543111111111138,
+        "minLongitude": -121.96311111111112,
+        "maxLongitude": -121.91288888888886
+      },
+      "dryLandCellCount": 83930,
+      "totalContourSegments": 1350
+    },
+    {
+      "gridName": "28_Yankee_Point",
+      "jsonFile": "28_Yankee_Point_inundation_limits.json",
+      "diagnosticPngFile": "28_Yankee_Point_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 36.468888888888884,
+        "maxLatitude": 36.51111111111117,
+        "minLongitude": -121.9471111111111,
+        "maxLongitude": -121.92888888888888
+      },
+      "dryLandCellCount": 57700,
+      "totalContourSegments": 1196
+    },
+    {
+      "gridName": "29_San_Carpoforo",
+      "jsonFile": "29_San_Carpoforo_inundation_limits.json",
+      "diagnosticPngFile": "29_San_Carpoforo_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 35.748888888888885,
+        "maxLatitude": 35.779111111111135,
+        "minLongitude": -121.33911111111115,
+        "maxLongitude": -121.30888888888887
+      },
+      "dryLandCellCount": 55445,
+      "totalContourSegments": 404
+    },
+    {
+      "gridName": "30_San_Simeon",
+      "jsonFile": "30_San_Simeon_inundation_limits.json",
+      "diagnosticPngFile": "30_San_Simeon_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 35.600888888888889,
+        "maxLatitude": 35.651111111111121,
+        "minLongitude": -121.20311111111113,
+        "maxLongitude": -121.1248888888889
+      },
+      "dryLandCellCount": 254798,
+      "totalContourSegments": 798
+    },
+    {
+      "gridName": "31_Cambria",
+      "jsonFile": "31_Cambria_inundation_limits.json",
+      "diagnosticPngFile": "31_Cambria_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 35.536888888888882,
+        "maxLatitude": 35.579111111111118,
+        "minLongitude": -121.12711111111116,
+        "maxLongitude": -121.07288888888888
+      },
+      "dryLandCellCount": 169970,
+      "totalContourSegments": 110
+    },
+    {
+      "gridName": "32_Morro_Bay",
+      "jsonFile": "32_Morro_Bay_inundation_limits.json",
+      "diagnosticPngFile": "32_Morro_Bay_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 35.280888888888882,
+        "maxLatitude": 35.499111111111141,
+        "minLongitude": -120.99911111111112,
+        "maxLongitude": -120.80088888888884
+      },
+      "dryLandCellCount": 2.647606E+6,
+      "totalContourSegments": 3792
+    },
+    {
+      "gridName": "33_Diablo_Canyon",
+      "jsonFile": "33_Diablo_Canyon_inundation_limits.json",
+      "diagnosticPngFile": "33_Diablo_Canyon_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 35.196888888888878,
+        "maxLatitude": 35.219111111111118,
+        "minLongitude": -120.86711111111111,
+        "maxLongitude": -120.83688888888889
+      },
+      "dryLandCellCount": 45162,
+      "totalContourSegments": 828
+    },
+    {
+      "gridName": "34_Avila_Beach",
+      "jsonFile": "34_Avila_Beach_inundation_limits.json",
+      "diagnosticPngFile": "34_Avila_Beach_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 34.940888888888892,
+        "maxLatitude": 35.199111111111158,
+        "minLongitude": -120.76711111111115,
+        "maxLongitude": -120.54488888888886
+      },
+      "dryLandCellCount": 3.634042E+6,
+      "totalContourSegments": 2773
+    },
+    {
+      "gridName": "35_Santa_Barbara",
+      "jsonFile": "35_Santa_Barbara_inundation_limits.json",
+      "diagnosticPngFile": "35_Santa_Barbara_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 34.36088888888888,
+        "maxLatitude": 34.4391111111111,
+        "minLongitude": -119.8991111111111,
+        "maxLongitude": -119.46088888888886
+      },
+      "dryLandCellCount": 1.796411E+6,
+      "totalContourSegments": 2787
+    },
+    {
+      "gridName": "36_Rincon",
+      "jsonFile": "36_Rincon_inundation_limits.json",
+      "diagnosticPngFile": "36_Rincon_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 34.300888888888878,
+        "maxLatitude": 34.379111111111115,
+        "minLongitude": -119.47911111111114,
+        "maxLongitude": -119.34088888888886
+      },
+      "dryLandCellCount": 704577,
+      "totalContourSegments": 1398
+    },
+    {
+      "gridName": "37_Ventura",
+      "jsonFile": "37_Ventura_inundation_limits.json",
+      "diagnosticPngFile": "37_Ventura_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 34.24088888888889,
+        "maxLatitude": 34.28711111111113,
+        "minLongitude": -119.32311111111107,
+        "maxLongitude": -119.25688888888885
+      },
+      "dryLandCellCount": 164227,
+      "totalContourSegments": 1371
+    },
+    {
+      "gridName": "38_Oxnard",
+      "jsonFile": "38_Oxnard_inundation_limits.json",
+      "diagnosticPngFile": "38_Oxnard_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 34.140888888888881,
+        "maxLatitude": 34.255111111111148,
+        "minLongitude": -119.27911111111109,
+        "maxLongitude": -119.20088888888881
+      },
+      "dryLandCellCount": 646737,
+      "totalContourSegments": 3382
+    },
+    {
+      "gridName": "39_Port_Hueneme",
+      "jsonFile": "39_Port_Hueneme_inundation_limits.json",
+      "diagnosticPngFile": "39_Port_Hueneme_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 34.112888888888889,
+        "maxLatitude": 34.159111111111137,
+        "minLongitude": -119.20311111111107,
+        "maxLongitude": -119.14088888888887
+      },
+      "dryLandCellCount": 243881,
+      "totalContourSegments": 817
+    },
+    {
+      "gridName": "40_Point_Mugu",
+      "jsonFile": "40_Point_Mugu_inundation_limits.json",
+      "diagnosticPngFile": "40_Point_Mugu_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 34.084888888888884,
+        "maxLatitude": 34.139111111111127,
+        "minLongitude": -119.13911111111111,
+        "maxLongitude": -119.06088888888883
+      },
+      "dryLandCellCount": 396966,
+      "totalContourSegments": 2614
+    },
+    {
+      "gridName": "41_Malibu_W",
+      "jsonFile": "41_Malibu_W_inundation_limits.json",
+      "diagnosticPngFile": "41_Malibu_W_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 34.020888888888877,
+        "maxLatitude": 34.059111111111108,
+        "minLongitude": -118.96711111111108,
+        "maxLongitude": -118.83688888888889
+      },
+      "dryLandCellCount": 303416,
+      "totalContourSegments": 875
+    },
+    {
+      "gridName": "42_Malibu_E",
+      "jsonFile": "42_Malibu_E_inundation_limits.json",
+      "diagnosticPngFile": "42_Malibu_E_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 34.000888888888888,
+        "maxLatitude": 34.043111111111116,
+        "minLongitude": -118.83911111111115,
+        "maxLongitude": -118.52088888888886
+      },
+      "dryLandCellCount": 500267,
+      "totalContourSegments": 2659
+    },
+    {
+      "gridName": "43_Santa_Monica",
+      "jsonFile": "43_Santa_Monica_inundation_limits.json",
+      "diagnosticPngFile": "43_Santa_Monica_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.932888888888883,
+        "maxLatitude": 34.031111111111144,
+        "minLongitude": -118.5191111111111,
+        "maxLongitude": -118.42088888888884
+      },
+      "dryLandCellCount": 646485,
+      "totalContourSegments": 3475
+    },
+    {
+      "gridName": "44_Manhattan_Beach",
+      "jsonFile": "44_Manhattan_Beach_inundation_limits.json",
+      "diagnosticPngFile": "44_Manhattan_Beach_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.86088888888888,
+        "maxLatitude": 33.931111111111122,
+        "minLongitude": -118.43911111111112,
+        "maxLongitude": -118.38088888888888
+      },
+      "dryLandCellCount": 340478,
+      "totalContourSegments": 717
+    },
+    {
+      "gridName": "45_Redondo_Beach",
+      "jsonFile": "45_Redondo_Beach_inundation_limits.json",
+      "diagnosticPngFile": "45_Redondo_Beach_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.800888888888878,
+        "maxLatitude": 33.859111111111183,
+        "minLongitude": -118.40711111111113,
+        "maxLongitude": -118.38088888888888
+      },
+      "dryLandCellCount": 95722,
+      "totalContourSegments": 965
+    },
+    {
+      "gridName": "46_POLA",
+      "jsonFile": "46_POLA_inundation_limits.json",
+      "diagnosticPngFile": "46_POLA_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.699111111111108,
+        "maxLatitude": 33.811111111111117,
+        "minLongitude": -118.29911111111113,
+        "maxLongitude": -118.00888888888892
+      },
+      "dryLandCellCount": 2.749058E+6,
+      "totalContourSegments": 17843
+    },
+    {
+      "gridName": "47_Seal_Beach",
+      "jsonFile": "47_Seal_Beach_inundation_limits.json",
+      "diagnosticPngFile": "47_Seal_Beach_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.720888888888879,
+        "maxLatitude": 33.767111111111149,
+        "minLongitude": -118.13111111111112,
+        "maxLongitude": -118.09288888888887
+      },
+      "dryLandCellCount": 101101,
+      "totalContourSegments": 3174
+    },
+    {
+      "gridName": "48_Huntington_Beach",
+      "jsonFile": "48_Huntington_Beach_inundation_limits.json",
+      "diagnosticPngFile": "48_Huntington_Beach_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.611999999999995,
+        "maxLatitude": 33.727999999999966,
+        "minLongitude": -118.07999999999998,
+        "maxLongitude": -117.93200000000002
+      },
+      "dryLandCellCount": 1.0819E+6,
+      "totalContourSegments": 7776
+    },
+    {
+      "gridName": "49_Newport_Beach",
+      "jsonFile": "49_Newport_Beach_inundation_limits.json",
+      "diagnosticPngFile": "49_Newport_Beach_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.588888888888889,
+        "maxLatitude": 33.651111111111142,
+        "minLongitude": -117.93511111111115,
+        "maxLongitude": -117.86088888888889
+      },
+      "dryLandCellCount": 434346,
+      "totalContourSegments": 4825
+    },
+    {
+      "gridName": "50_Crystal_Cove",
+      "jsonFile": "50_Crystal_Cove_inundation_limits.json",
+      "diagnosticPngFile": "50_Crystal_Cove_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.544888888888877,
+        "maxLatitude": 33.567111111111132,
+        "minLongitude": -117.83111111111111,
+        "maxLongitude": -117.80488888888885
+      },
+      "dryLandCellCount": 36016,
+      "totalContourSegments": 372
+    },
+    {
+      "gridName": "51_Laguna_Beach",
+      "jsonFile": "51_Laguna_Beach_inundation_limits.json",
+      "diagnosticPngFile": "51_Laguna_Beach_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.524888888888881,
+        "maxLatitude": 33.559111111111129,
+        "minLongitude": -117.80311111111109,
+        "maxLongitude": -117.76088888888887
+      },
+      "dryLandCellCount": 121940,
+      "totalContourSegments": 519
+    },
+    {
+      "gridName": "52_South_Laguna",
+      "jsonFile": "52_South_Laguna_inundation_limits.json",
+      "diagnosticPngFile": "52_South_Laguna_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.49688888888889,
+        "maxLatitude": 33.523111111111135,
+        "minLongitude": -117.76711111111115,
+        "maxLongitude": -117.73688888888887
+      },
+      "dryLandCellCount": 56638,
+      "totalContourSegments": 398
+    },
+    {
+      "gridName": "53_Monarch_Beach",
+      "jsonFile": "53_Monarch_Beach_inundation_limits.json",
+      "diagnosticPngFile": "53_Monarch_Beach_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.460888888888888,
+        "maxLatitude": 33.499111111111134,
+        "minLongitude": -117.74711111111111,
+        "maxLongitude": -117.71288888888887
+      },
+      "dryLandCellCount": 69307,
+      "totalContourSegments": 639
+    },
+    {
+      "gridName": "54_Dana_Point",
+      "jsonFile": "54_Dana_Point_inundation_limits.json",
+      "diagnosticPngFile": "54_Dana_Point_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.432888888888883,
+        "maxLatitude": 33.479111111111131,
+        "minLongitude": -117.70711111111109,
+        "maxLongitude": -117.63288888888883
+      },
+      "dryLandCellCount": 250533,
+      "totalContourSegments": 1238
+    },
+    {
+      "gridName": "55_San_Clemente",
+      "jsonFile": "55_San_Clemente_inundation_limits.json",
+      "diagnosticPngFile": "55_San_Clemente_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.392888888888891,
+        "maxLatitude": 33.431111111111122,
+        "minLongitude": -117.63911111111111,
+        "maxLongitude": -117.59288888888887
+      },
+      "dryLandCellCount": 101778,
+      "totalContourSegments": 626
+    },
+    {
+      "gridName": "56_San_Onofre",
+      "jsonFile": "56_San_Onofre_inundation_limits.json",
+      "diagnosticPngFile": "56_San_Onofre_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.356888888888889,
+        "maxLatitude": 33.392888888888891,
+        "minLongitude": -117.59911111111114,
+        "maxLongitude": -117.54088888888884
+      },
+      "dryLandCellCount": 129386,
+      "totalContourSegments": 700
+    },
+    {
+      "gridName": "57_Oceanside",
+      "jsonFile": "57_Oceanside_inundation_limits.json",
+      "diagnosticPngFile": "57_Oceanside_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.160888888888877,
+        "maxLatitude": 33.239111111111114,
+        "minLongitude": -117.41111111111115,
+        "maxLongitude": -117.30888888888887
+      },
+      "dryLandCellCount": 774840,
+      "totalContourSegments": 2058
+    },
+    {
+      "gridName": "58_Carlsbad",
+      "jsonFile": "58_Carlsbad_inundation_limits.json",
+      "diagnosticPngFile": "58_Carlsbad_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.100888888888889,
+        "maxLatitude": 33.159111111111137,
+        "minLongitude": -117.35911111111113,
+        "maxLongitude": -117.29288888888885
+      },
+      "dryLandCellCount": 293896,
+      "totalContourSegments": 1400
+    },
+    {
+      "gridName": "59_Encinitas",
+      "jsonFile": "59_Encinitas_inundation_limits.json",
+      "diagnosticPngFile": "59_Encinitas_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 33.020888888888877,
+        "maxLatitude": 33.099111111111128,
+        "minLongitude": -117.31911111111111,
+        "maxLongitude": -117.22888888888883
+      },
+      "dryLandCellCount": 711823,
+      "totalContourSegments": 1771
+    },
+    {
+      "gridName": "60_Del_Mar",
+      "jsonFile": "60_Del_Mar_inundation_limits.json",
+      "diagnosticPngFile": "60_Del_Mar_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 32.924888888888887,
+        "maxLatitude": 33.019111111111172,
+        "minLongitude": -117.28933333333333,
+        "maxLongitude": -117.23288888888885
+      },
+      "dryLandCellCount": 411626,
+      "totalContourSegments": 3074
+    },
+    {
+      "gridName": "61_La_Jolla",
+      "jsonFile": "61_La_Jolla_inundation_limits.json",
+      "diagnosticPngFile": "61_La_Jolla_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 32.840888888888884,
+        "maxLatitude": 32.899111111111146,
+        "minLongitude": -117.27111111111111,
+        "maxLongitude": -117.22888888888883
+      },
+      "dryLandCellCount": 207751,
+      "totalContourSegments": 529
+    },
+    {
+      "gridName": "62_San_Diego",
+      "jsonFile": "62_San_Diego_inundation_limits.json",
+      "diagnosticPngFile": "62_San_Diego_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 32.560888888888883,
+        "maxLatitude": 32.819111111111148,
+        "minLongitude": -117.27911111111109,
+        "maxLongitude": -117.08088888888886
+      },
+      "dryLandCellCount": 3.292016E+6,
+      "totalContourSegments": 19837
+    },
+    {
+      "gridName": "63_Alameda",
+      "jsonFile": "63_Alameda_inundation_limits.json",
+      "diagnosticPngFile": "63_Alameda_inundation_limits_diagnostic.png",
+      "bounds180": {
+        "minLatitude": 37.623999999999995,
+        "maxLatitude": 37.851999999999975,
+        "minLongitude": -122.55199999999996,
+        "maxLongitude": -122.12
+      },
+      "dryLandCellCount": 6.294198E+6,
+      "totalContourSegments": 37276
+    }
+  ]
+}
