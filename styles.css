@@ -213,15 +213,14 @@ canvas {
   top: 18px;
   left: 18px;
   right: 18px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 14px;
   z-index: 500;
   pointer-events: none;
 }
 
 .map-overlay-card {
+  position: absolute;
+  top: 0;
+  right: 0;
   max-width: 240px;
   padding: 14px 16px;
   border-radius: 16px;
@@ -250,10 +249,14 @@ canvas {
 }
 
 .map-hud {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   pointer-events: auto;
 }
 
@@ -471,11 +474,10 @@ canvas {
   .map-top-strip {
     left: 14px;
     right: 14px;
-    gap: 10px;
   }
 
   .map-hud {
-    flex: 1 1 auto;
+    max-width: calc(100% - 236px);
   }
 
   .hud-item {
@@ -500,6 +502,17 @@ canvas {
   .map-top-strip {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .map-hud,
+  .map-overlay-card {
+    position: static;
+    transform: none;
+  }
+
+  .map-hud {
+    max-width: none;
+    justify-content: flex-start;
   }
 
   .map-overlay-card {
