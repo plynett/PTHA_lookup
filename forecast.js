@@ -8,6 +8,7 @@ const WORKBOOK_SHEET_NAME = "(1) Paste CA TEX Values";
 const NOAA_STATIONS_CSV_URL = "./FASTER_data/noaa_ca_tide_stations.csv";
 const NOAA_PREDICTIONS_URL = "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter";
 const NOAA_APPLICATION_ID = "PTHA_Forecast_Web";
+const NOAA_TIDE_DATUM = "MLLW";
 const SITE_LOOKUP_CONCURRENCY = 8;
 const SITE_LABEL_MIN_ZOOM = 8;
 const INUNDATION_ZOOM_LEVELS_FROM_MAX = 5;
@@ -947,6 +948,10 @@ function renderTideChart(selectionContext) {
     x: timeMs,
     y: convertValue(tideSeries.level[index], "length"),
   }));
+  const observedPoints = (tideSeries.observedTimeMs || []).map((timeMs, index) => ({
+    x: timeMs,
+    y: convertValue(tideSeries.observedLevel[index], "length"),
+  }));
   const upperEnvelopePoints = tideSeries.timeMs.map((timeMs, index) => ({
     x: timeMs,
     y: timeMs >= arrivalTimeMs
@@ -964,7 +969,7 @@ function renderTideChart(selectionContext) {
   dom.tideChartTitle.textContent = "NOAA Tide Prediction + Tsunami Envelope";
   dom.tideChartMeta.textContent = `${formatTideChartTitle(tideStation)}. Nearest site ${nearestSite.siteCode}, predicted amplitude ${formatDisplayLength(amplitudeMeters, 2)}, arrival ${formatDisplayDateTime(arrivalTimeMs)} ${getTimeModeShortLabel()}.`;
 
-  state.tideChart.options.scales.y.title.text = `Elevation (${getUnitLabel("length")})`;
+  state.tideChart.options.scales.y.title.text = getTideElevationAxisLabel(tideSeries.datum || NOAA_TIDE_DATUM);
   state.tideChart.options.scales.x.title.text = `${getTimeModeAxisLabel()} time`;
   state.tideChart.options.plugins.emptyStateMessage.message = "";
   state.tideChart.options.plugins.verticalReferenceLine.value = arrivalTimeMs;
@@ -1010,6 +1015,18 @@ function renderTideChart(selectionContext) {
       showLine: false,
     },
   ];
+  if (observedPoints.length) {
+    state.tideChart.data.datasets.splice(1, 0, {
+      label: "Observed Water Level",
+      data: observedPoints,
+      borderColor: COLORS.navy,
+      backgroundColor: "rgba(17, 49, 76, 0.12)",
+      borderWidth: 1.8,
+      pointRadius: 0,
+      tension: 0.1,
+      spanGaps: false,
+    });
+  }
   state.tideChart.update();
 }
 
@@ -1358,6 +1375,7 @@ function resetCharts() {
 
   if (state.tideChart) {
     state.tideChart.options.scales.x.title.text = `${getTimeModeAxisLabel()} time`;
+    state.tideChart.options.scales.y.title.text = getTideElevationAxisLabel(NOAA_TIDE_DATUM);
     state.tideChart.options.plugins.emptyStateMessage.message = "Click any map location to load NOAA tides and the site-based tsunami envelope.";
     state.tideChart.options.plugins.verticalReferenceLine.value = null;
     state.tideChart.options.plugins.verticalReferenceLine.label = "";
@@ -1482,12 +1500,12 @@ async function loadTideSeries(stationId, startMs, endMs) {
     return state.tideCache.get(cacheKey);
   }
 
-  const params = new URLSearchParams({
+  const predictionParams = new URLSearchParams({
     begin_date: formatNoaaDate(startMs),
     end_date: formatNoaaDate(endMs),
     station: stationId,
     product: "predictions",
-    datum: "MLLW",
+    datum: NOAA_TIDE_DATUM,
     interval: "h",
     units: "metric",
     time_zone: "gmt",
@@ -1495,21 +1513,65 @@ async function loadTideSeries(stationId, startMs, endMs) {
     application: NOAA_APPLICATION_ID,
   });
 
-  const requestUrl = `${NOAA_PREDICTIONS_URL}?${params.toString()}`;
-  const response = await fetch(requestUrl);
-  if (!response.ok) {
-    throw new Error(`NOAA tide request failed with ${response.status}.`);
+  const predictionRequestUrl = `${NOAA_PREDICTIONS_URL}?${predictionParams.toString()}`;
+  const predictionResponse = await fetch(predictionRequestUrl);
+  if (!predictionResponse.ok) {
+    throw new Error(`NOAA tide request failed with ${predictionResponse.status}.`);
   }
 
-  const payload = await response.json();
-  if (!payload.predictions) {
-    throw new Error(payload.error?.message || "NOAA tide payload did not include predictions.");
+  const predictionPayload = await predictionResponse.json();
+  if (!predictionPayload.predictions) {
+    throw new Error(predictionPayload.error?.message || "NOAA tide payload did not include predictions.");
+  }
+
+  const predictionRows = predictionPayload.predictions
+    .map((row) => ({
+      timeMs: Date.parse(`${row.t}Z`),
+      level: Number(row.v),
+    }))
+    .filter((row) => Number.isFinite(row.timeMs) && Number.isFinite(row.level));
+
+  let observedRows = [];
+  const observedEndMs = Math.min(endMs, Date.now());
+  if (observedEndMs >= startMs) {
+    try {
+      const observedParams = new URLSearchParams({
+        begin_date: formatNoaaDate(startMs),
+        end_date: formatNoaaDate(observedEndMs),
+        station: stationId,
+        product: "water_level",
+        datum: NOAA_TIDE_DATUM,
+        units: "metric",
+        time_zone: "gmt",
+        format: "json",
+        application: NOAA_APPLICATION_ID,
+      });
+      const observedRequestUrl = `${NOAA_PREDICTIONS_URL}?${observedParams.toString()}`;
+      const observedResponse = await fetch(observedRequestUrl);
+      if (observedResponse.ok) {
+        const observedPayload = await observedResponse.json();
+        observedRows = (observedPayload.data || [])
+          .map((row) => ({
+            timeMs: Date.parse(`${row.t}Z`),
+            level: Number(row.v),
+          }))
+          .filter((row) => Number.isFinite(row.timeMs) && Number.isFinite(row.level));
+      } else {
+        console.warn(`NOAA observed water-level request failed with ${observedResponse.status}.`);
+      }
+    } catch (error) {
+      console.warn("Unable to load NOAA observed water levels.", error);
+    }
   }
 
   const tideSeries = {
     stationId,
-    timeMs: payload.predictions.map((row) => Date.parse(`${row.t}Z`)),
-    level: payload.predictions.map((row) => Number(row.v)),
+    datum: NOAA_TIDE_DATUM,
+    timeMs: predictionRows.map((row) => row.timeMs),
+    level: predictionRows.map((row) => row.level),
+    observedTimeMs: observedRows.map((row) => row.timeMs),
+    observedLevel: observedRows.map((row) => row.level),
+    observedRangeEndMs: observedRows.length ? observedRows.at(-1).timeMs : NaN,
   };
   state.tideCache.set(cacheKey, tideSeries);
   return tideSeries;
@@ -1853,6 +1915,10 @@ function getUnitLabel(quantity) {
     return "";
   }
   return state.unitSystem === "english" ? "ft" : "m";
+}
+
+function getTideElevationAxisLabel(datum) {
+  return `Elevation (${getUnitLabel("length")}, ${datum || NOAA_TIDE_DATUM})`;
 }
 
 function getHazardChartMinReturnPeriod(eventReturnPeriodYears) {
